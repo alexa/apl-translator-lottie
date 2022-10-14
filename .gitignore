@@ -1,0 +1,18 @@
+#vs-code
+*.code-workspace
+# npm
+node_modules
+.npm
+npm-debug.log
+
+# OS Files
+.DS_store
+build
+lib
+
+# Test result file
+test/*.json
+
+# IDEA
+*.iml
+.idea/

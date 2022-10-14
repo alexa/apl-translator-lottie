@@ -1,0 +1,88 @@
+{
+    "type": "APL",
+    "version": "1.9",
+    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+    "theme": "light",
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": {
+            "type": "VectorGraphic",
+            "source": "myGraphic",
+            "width": "100%",
+            "height": "100%",
+            "scale": "best-fit",
+            "align": "center",
+            "frame": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+        }
+    },
+    "graphics": {
+        "myGraphic": {
+            "type": "AVG",
+            "version": "1.2",
+            "width": 1920,
+            "height": 1080,
+            "items": [
+                {
+                    "items": [
+                        {
+                            "translateX": 35.676,
+                            "translateY": -22.992,
+                            "items": [
+                                {
+                                    "type": "path",
+                                    "pathData": "M-683.676,-369.008 l1367.352,0 l0,738.016 l-1367.352,0 z",
+                                    "fill": "rgb(255,0,0,1)"
+                                },
+                                {
+                                    "type": "path",
+                                    "pathData": "M-683.676,-369.008 l1367.352,0 l0,738.016 l-1367.352,0 z",
+                                    "stroke": "rgb(255,255,255,1)",
+                                    "strokeWidth": 6,
+                                    "strokeLineCap": "butt",
+                                    "strokeLineJoin": "miter"
+                                }
+                            ],
+                            "type": "group"
+                        },
+                        {
+                            "translateX": 21.715,
+                            "translateY": -18.285,
+                            "items": [
+                                {
+                                    "type": "path",
+                                    "pathData": "M0,-229.715 a229.715,229.715 0 0 1  0,459.43 a229.715,229.715 0 0 1  0,-459.43",
+                                    "fill": "rgb(60,255,0,1)"
+                                },
+                                {
+                                    "type": "path",
+                                    "pathData": "M0,-229.715 a229.715,229.715 0 0 1  0,459.43 a229.715,229.715 0 0 1  0,-459.43",
+                                    "stroke": "rgb(255,255,255,1)",
+                                    "strokeWidth": 6,
+                                    "strokeLineCap": "butt",
+                                    "strokeLineJoin": "miter"
+                                }
+                            ],
+                            "type": "group"
+                        }
+                    ],
+                    "type": "group",
+                    "translateX": 960,
+                    "translateY": 540
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "frame",
+                    "value": 0
+                }
+            ],
+            "resources": [
+                {
+                    "easing": {}
+                }
+            ]
+        }
+    }
+}

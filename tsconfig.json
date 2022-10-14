@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib",
+        "allowJs": true,
+        "target": "es5",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "types": [
+            "node"
+        ]
+    },
+        "include": [
+        "./src/**/*"
+    ]
+}

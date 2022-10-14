@@ -1,0 +1,70 @@
+{
+    "type": "APL",
+    "version": "1.9",
+    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+    "theme": "light",
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": {
+            "type": "VectorGraphic",
+            "source": "myGraphic",
+            "width": "100%",
+            "height": "100%",
+            "scale": "best-fit",
+            "align": "center",
+            "frame": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+        }
+    },
+    "graphics": {
+        "myGraphic": {
+            "type": "AVG",
+            "version": "1.2",
+            "width": 1920,
+            "height": 1080,
+            "items": [
+                {
+                    "items": [
+                        {
+                            "items": [
+                                {
+                                    "type": "path",
+                                    "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
+                                    "fill": "rgb(255,0,0,1)"
+                                },
+                                {
+                                    "type": "path",
+                                    "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
+                                    "stroke": "rgb(234,226,9,1)",
+                                    "strokeWidth": 23,
+                                    "strokeLineCap": "butt",
+                                    "strokeLineJoin": "miter",
+                                    "strokeDashArray": [
+                                        81
+                                    ],
+                                    "strokeDashOffset": 0
+                                }
+                            ],
+                            "type": "group"
+                        }
+                    ],
+                    "type": "group",
+                    "translateX": 960,
+                    "translateY": 540
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "frame",
+                    "value": 0
+                }
+            ],
+            "resources": [
+                {
+                    "easing": {}
+                }
+            ]
+        }
+    }
+}

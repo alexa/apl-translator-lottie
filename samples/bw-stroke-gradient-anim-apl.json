@@ -1,0 +1,90 @@
+{
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center",
+      "frame": "${(elapsedTime*0.06)%201}"
+    }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 800,
+      "height": 600,
+      "items": [
+        {
+          "items": [
+            {
+              "items": [
+                {
+                  "type": "path",
+                  "pathData": "M2.5160000000000196,-254.52300000000008 a250,250 0 0 1  -5.032000000000039,509.04600000000016 a250,250 0 0 1  5.032000000000039,-509.04600000000016",
+                  "stroke": "@gradient1000",
+                  "strokeTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)",
+                  "strokeWidth": 50,
+                  "strokeLineCap": "round",
+                  "strokeLineJoin": "miter",
+                  "strokeDashArray": [
+                    "${@ease2(frame)}",
+                    100
+                  ],
+                  "strokeDashOffset": "-${@ease1(frame)}",
+                  "pathLength": 100
+                }
+              ],
+              "type": "group"
+            }
+          ],
+          "type": "group",
+          "translateX": 400,
+          "translateY": 300
+        }
+      ],
+      "parameters": [
+        {
+          "name": "frame",
+          "value": 0
+        }
+      ],
+      "resources": [
+        {
+          "easing": {
+            "ease1": "curve(80,0,0.333,0,0.2,1) end(170,99.9)",
+            "ease2": "curve(0,0.01,0.6,0,0.833,0.833) end(80,100)"
+          }
+        },
+        {
+          "gradient": {
+            "gradient1000": {
+              "type": "linear",
+              "inputRange": [
+                0,
+                1
+              ],
+              "colorRange": [
+                "rgb(255,255,255)",
+                "rgb(0,0,0)"
+              ],
+              "x1": 0.505032,
+              "x2": 0.498844,
+              "y1": 1.009046,
+              "y2": 0.010172000000000025
+            }
+          }
+        }
+      ]
+    }
+  }
+}
