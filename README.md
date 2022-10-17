@@ -20,7 +20,7 @@ npm install apl-translator-lottie --save
 
 * To convert with a filepath
 
-```
+```typescript
 import {convertFile} from "apl-translator-lottie"
 
 const aplDocument = convertFile('lottie_sample.json')
@@ -28,12 +28,12 @@ const aplDocument = convertFile('lottie_sample.json')
 
 * To convert with a JSON object
 
-```
+```typescript
 import {convert} from "apl-translator-lottie"
 
 let lottieJSON = {
-        "v":"5.7.5"
-    }
+    "v":"5.7.5"
+}
 const aplDocument = convert(lottieJSON)
 ```
 
