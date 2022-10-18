@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "A Lottie to APL converter library",
   "main": "./lib/index.js",
+  "bugs": {
+    "url": "https://github.com/alexa/apl-translator-lottie/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/alexa/apl-translator-lottie"
+  },
   "files": [
     "lib/**"
   ],
