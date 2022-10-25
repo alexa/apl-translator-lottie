@@ -1,6 +1,6 @@
 {
   "name": "apl-translator-lottie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Lottie to APL converter library",
   "main": "./lib/index.js",
   "bugs": {
@@ -21,7 +21,7 @@
     "test": "jest",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "tsc",
+    "build": "tsc && babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "release": "npm run test && npm run build",
     "prepare": "npm run release"
   },
