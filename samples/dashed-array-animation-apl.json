@@ -1,82 +1,79 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1920,
-            "height": 1080,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
-                                    "fill": "rgb(255,0,0,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
-                                    "stroke": "rgb(${(@ease6(frame)*255)},${(@ease7(frame)*255)},${(@ease8(frame)*255)},1)",
-                                    "strokeWidth": 23,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter",
-                                    "strokeDashArray": [
-                                        81
-                                    ],
-                                    "strokeDashOffset": 0
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": "${@ease2(frame)}",
-                    "translateY": "${@ease3(frame)}",
-                    "scaleX": "${(@ease4(frame)*0.01)}",
-                    "scaleY": "${(@ease5(frame)*0.01)}",
-                    "rotation": "${@ease1(frame)}"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {
-                        "ease1": "curve(0,0,0.167,0.167,0.833,0.833) curve(380,179.888,0.167,0.167,0.833,0.833) end(899.000036617021,0.682)",
-                        "ease2": "spatial(3,0) scurve(0,960,540,0,1.333,48.333,0,-1.333,47.333,0,0.167,0.167,0.833,0.833) scurve(380,968,830,0,1.333,-47.333,0,0,95.667,0,0.167,0.167,0.833,0.833) send(899.000036617021,968,256,0)",
-                        "ease3": "spatial(3,1) scurve(0,960,540,0,1.333,48.333,0,-1.333,47.333,0,0.167,0.167,0.833,0.833) scurve(380,968,830,0,1.333,-47.333,0,0,95.667,0,0.167,0.167,0.833,0.833) send(899.000036617021,968,256,0)",
-                        "ease4": "curve(0,100,0.167,0.167,0.833,0.833) curve(446,57.782,0.167,0.167,0.833,0.833) end(899.000036617021,112.018)",
-                        "ease5": "curve(0,100,0.167,0.167,0.833,0.833) curve(446,-287.985,0.167,0.167,0.833,0.833) end(899.000036617021,352.424)",
-                        "ease6": "curve(0,0.916911780834,0.167,0.167,0.833,0.833) curve(355,0.916911780834,0.167,0.167,0.833,0.833) end(899.000036617021,0.175736889243)",
-                        "ease7": "curve(0,0.88766336441,0.167,0.167,0.833,0.833) curve(355,0.035409543663,0.167,0.167,0.833,0.833) end(899.000036617021,0.916911780834)",
-                        "ease8": "curve(0,0.035409543663,0.167,0.167,0.833,0.833) curve(355,0.580353021622,0.167,0.167,0.833,0.833) end(899.000036617021,0.035409543663)"
-                    }
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1920,
+      "height": 1080,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
+                "fill": "rgb(255,0,0,1)"
+              },
+              {
+                "type": "path",
+                "pathData": "M-544,-2 C-544,-2 560,-2 560,-2",
+                "stroke": "rgb(${(@ease6(frame)*255)},${(@ease7(frame)*255)},${(@ease8(frame)*255)},1)",
+                "strokeWidth": 23,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  81
+                ],
+                "strokeDashOffset": 0
+              }
+            ],
+            "type": "group",
+            "translateX": "${@ease2(frame)}",
+            "translateY": "${@ease3(frame)}",
+            "rotation": "${@ease1(frame)}",
+            "scaleX": "${(@ease4(frame)*0.01)}",
+            "scaleY": "${(@ease5(frame)*0.01)}"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "curve(0,0,0.167,0.167,0.833,0.833) curve(380,179.888,0.167,0.167,0.833,0.833) end(899.000036617021,0.682)",
+            "ease2": "spatial(3,0) scurve(0,960,540,0,1.333,48.333,0,-1.333,47.333,0,0.167,0.167,0.833,0.833) scurve(380,968,830,0,1.333,-47.333,0,0,95.667,0,0.167,0.167,0.833,0.833) send(899.000036617021,968,256,0)",
+            "ease3": "spatial(3,1) scurve(0,960,540,0,1.333,48.333,0,-1.333,47.333,0,0.167,0.167,0.833,0.833) scurve(380,968,830,0,1.333,-47.333,0,0,95.667,0,0.167,0.167,0.833,0.833) send(899.000036617021,968,256,0)",
+            "ease4": "curve(0,100,0.167,0.167,0.833,0.833) curve(446,57.782,0.167,0.167,0.833,0.833) end(899.000036617021,112.018)",
+            "ease5": "curve(0,100,0.167,0.167,0.833,0.833) curve(446,-287.985,0.167,0.167,0.833,0.833) end(899.000036617021,352.424)",
+            "ease6": "curve(0,0.916911780834,0.167,0.167,0.833,0.833) curve(355,0.916911780834,0.167,0.167,0.833,0.833) end(899.000036617021,0.175736889243)",
+            "ease7": "curve(0,0.88766336441,0.167,0.167,0.833,0.833) curve(355,0.035409543663,0.167,0.167,0.833,0.833) end(899.000036617021,0.916911780834)",
+            "ease8": "curve(0,0.035409543663,0.167,0.167,0.833,0.833) curve(355,0.580353021622,0.167,0.167,0.833,0.833) end(899.000036617021,0.035409543663)"
+          }
+        }
+      ]
+    }
+  }
 }

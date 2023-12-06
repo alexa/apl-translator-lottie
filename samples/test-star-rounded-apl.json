@@ -1,68 +1,63 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1920,
-            "height": 1080,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "translateX": -36.818,
-                            "translateY": -20.455,
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M0,-288.735 L84.85679351770746,-116.79535642692804 L274.60330323248115,-89.22402187085045 L137.30117608798244,44.61185642692802 L169.71417482066727,233.59152187085044 L1.7679858445250592e-14,144.367 L-169.7141748206672,233.59152187085047 L-137.3011760879824,44.61185642692805 L-274.6033032324812,-89.2240218708504 L-84.8567935177075,-116.79535642692801 z",
-                                    "fill": "rgb(255,0,0,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M0,-288.735 L84.85679351770746,-116.79535642692804 L274.60330323248115,-89.22402187085045 L137.30117608798244,44.61185642692802 L169.71417482066727,233.59152187085044 L1.7679858445250592e-14,144.367 L-169.7141748206672,233.59152187085047 L-137.3011760879824,44.61185642692805 L-274.6033032324812,-89.2240218708504 L-84.8567935177075,-116.79535642692801 z",
-                                    "stroke": "rgb(255,255,255,1)",
-                                    "strokeWidth": 6,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter"
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 1011.818,
-                    "translateY": 549.545
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {}
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1920,
+      "height": 1080,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M0,-288.735 L84.85679351770746,-116.79535642692804 L274.60330323248115,-89.22402187085045 L137.30117608798244,44.61185642692802 L169.71417482066727,233.59152187085044 L1.7679858445250592e-14,144.367 L-169.7141748206672,233.59152187085047 L-137.3011760879824,44.61185642692805 L-274.6033032324812,-89.2240218708504 L-84.8567935177075,-116.79535642692801 z",
+                "fill": "rgb(255,0,0,1)"
+              },
+              {
+                "type": "path",
+                "pathData": "M0,-288.735 L84.85679351770746,-116.79535642692804 L274.60330323248115,-89.22402187085045 L137.30117608798244,44.61185642692802 L169.71417482066727,233.59152187085044 L1.7679858445250592e-14,144.367 L-169.7141748206672,233.59152187085047 L-137.3011760879824,44.61185642692805 L-274.6033032324812,-89.2240218708504 L-84.8567935177075,-116.79535642692801 z",
+                "stroke": "rgb(255,255,255,1)",
+                "strokeWidth": 6,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter"
+              }
+            ],
+            "type": "group",
+            "translateX": 975,
+            "translateY": 529.0899999999999
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {}
+        }
+      ]
+    }
+  }
 }

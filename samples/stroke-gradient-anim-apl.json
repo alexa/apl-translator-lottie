@@ -1,0 +1,110 @@
+{
+  "type": "APL",
+  "version": "1.9",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
+    }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 200,
+      "height": 200,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.06)%601}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M0,-84 a84,84 0 0 1  0,168 a84,84 0 0 1  0,-168",
+                "stroke": "rgb(165,168,170,1)",
+                "strokeWidth": 14,
+                "strokeLineCap": "round",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  100,
+                  100
+                ],
+                "strokeDashOffset": 0,
+                "pathLength": 100
+              }
+            ],
+            "type": "group",
+            "translateX": 100,
+            "translateY": 100,
+            "opacity": 0.5
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M0,-84 a84,84 0 0 1  0,168 a84,84 0 0 1  0,-168",
+                "stroke": "@gradient1000",
+                "strokeTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)",
+                "strokeWidth": 14,
+                "strokeLineCap": "round",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  100,
+                  100
+                ],
+                "strokeDashOffset": "-${@ease1(frame)}",
+                "pathLength": 100
+              }
+            ],
+            "type": "group",
+            "translateX": 100,
+            "translateY": 100,
+            "scaleX": -1
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "curve(0,0,0.167,0.167,0.833,0.833) end(600,100)"
+          }
+        },
+        {
+          "gradient": {
+            "gradient1000": {
+              "type": "linear",
+              "inputRange": [
+                0,
+                0.5,
+                1
+              ],
+              "colorRange": [
+                "rgb(50,195,101)",
+                "rgb(37,132,173)",
+                "rgb(219,20,20)"
+              ],
+              "x1": 0.29994642857142856,
+              "x2": 1.237095238095238,
+              "y1": -0.014017857142857167,
+              "y2": 0.7845952380952381
+            }
+          }
+        }
+      ]
+    }
+  }
+}

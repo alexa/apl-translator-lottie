@@ -19,3 +19,7 @@ import { testConverter } from './utils';
 test('Stroke gradient with animation', () => {
     testConverter('bw-stroke-gradient-anim.json', 'bw-stroke-gradient-anim-apl.json');
 });
+
+test('Stroke gradient with animation 2', () => {
+    testConverter('stroke-gradient-anim.json', 'stroke-gradient-anim-apl.json');
+});

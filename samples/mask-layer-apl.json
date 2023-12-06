@@ -1,44 +1,46 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.0299700012207031)%91.000003706506}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1920,
-            "height": 1080,
-            "items": [
-                {
-                    "type": "TextLayer"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {}
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1920,
+      "height": 1080,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%91.000003706506}"
+          }
+        ],
+        "items": [
+          {
+            "type": "TextLayer"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {}
+        }
+      ]
+    }
+  }
 }

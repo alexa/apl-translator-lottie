@@ -1,116 +1,103 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.06)%180}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1312,
-            "height": 736,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "fill": "rgb(0,231,254,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "stroke": "rgb(212,28,28,1)",
-                                    "strokeWidth": 125,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter"
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 604,
-                    "translateY": 512
-                },
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "fill": "rgb(0,231,254,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "stroke": "rgb(212,28,28,1)",
-                                    "strokeWidth": 125,
-                                    "strokeLineCap": "square",
-                                    "strokeLineJoin": "miter"
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 604,
-                    "translateY": 708
-                },
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "fill": "rgb(0,231,254,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
-                                    "stroke": "rgb(212,28,28,1)",
-                                    "strokeWidth": 125,
-                                    "strokeLineCap": "round",
-                                    "strokeLineJoin": "miter"
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 600,
-                    "translateY": 332
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {}
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1312,
+      "height": 736,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.06)%180}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "fill": "rgb(0,231,254,1)"
+              },
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "stroke": "rgb(212,28,28,1)",
+                "strokeWidth": 125,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter"
+              }
+            ],
+            "type": "group",
+            "translateX": 604,
+            "translateY": 512
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "fill": "rgb(0,231,254,1)"
+              },
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "stroke": "rgb(212,28,28,1)",
+                "strokeWidth": 125,
+                "strokeLineCap": "square",
+                "strokeLineJoin": "miter"
+              }
+            ],
+            "type": "group",
+            "translateX": 604,
+            "translateY": 708
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "fill": "rgb(0,231,254,1)"
+              },
+              {
+                "type": "path",
+                "pathData": "M-376,-156 C-376,-156 452,-156 452,-156",
+                "stroke": "rgb(212,28,28,1)",
+                "strokeWidth": 125,
+                "strokeLineCap": "round",
+                "strokeLineJoin": "miter"
+              }
+            ],
+            "type": "group",
+            "translateX": 600,
+            "translateY": 332
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {}
+        }
+      ]
+    }
+  }
 }

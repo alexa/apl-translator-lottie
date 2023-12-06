@@ -15,7 +15,7 @@
  */
 
 import * as Avg from '../avg/types';
-import { processSkewTransform } from './utils';
+import { parseFunctionInsideExpression, processSkewTransform } from "./utils";
 import Box from './range';
 import { validate, validateMap } from './validate';
 import { resources } from './value';
@@ -162,22 +162,26 @@ export const transformParams = (params, scaleX, scaleY, tX, tY, cmd?) => {
     for (let i = 0; i < params.length; i++) {
         let param = params[i];
         if (cmd === 'A' && i >= 2 && i <= 4) {
-            continue
+            continue;
         }
-        if (!isNaN(param)) {
-            params[i] = i % 2 ? param * scaleY + tY : param * scaleX + tX;
-        }
+        const paramValueString: string = parseTransformValueToString(param);
+ 
+        const scaleString = i % 2
+            ? `${parseTransformValueToString(scaleY, "1")}`
+            : `${parseTransformValueToString(scaleX, "1")}`;
+ 
+        const translateString = i % 2
+            ? `${parseTransformValueToString(tY, "0")}`
+            : `${parseTransformValueToString(tX, "0")}`;
+ 
+        params[i] = `\${${translateString}+(${paramValueString})*${scaleString}}`;
     }
-    return params
+    return params;
 };
 
 export const parsePathData = (path: Avg.PathData[],
-    translateX: number = 0, translateY: number = 0,
-    scaleX: number = 1, scaleY: number = 1): Avg.PathData[] => {
-    translateX = isNaN(translateX) ? 0 : translateX;
-    translateY = isNaN(translateY) ? 0 : translateY;
-    scaleX = isNaN(scaleX) ? 0 : scaleX;
-    scaleY = isNaN(scaleY) ? 0 : scaleY;
+    translateX: any = 0, translateY: any = 0,
+    scaleX: any = 1, scaleY: any = 1): Avg.PathData[] => {
 
     path.forEach(v => {
         const cmdUpperCase = v.cmd.toUpperCase();
@@ -206,4 +210,17 @@ export const parsePathData = (path: Avg.PathData[],
         }
     });
     return path;
+};
+
+export const parseTransformValueToString = (transformValue: any, defaultValue?: string): string => {
+    const transformValueNum = Number(transformValue);
+    return !isNaN(transformValueNum)
+        ? transformValueNum.toLocaleString(
+            "en-US",
+            {
+                maximumSignificantDigits: 17, // to match num of significant digits from Number.toString()
+                useGrouping: false
+            }
+          )
+        : parseFunctionInsideExpression(transformValue, defaultValue);
 };

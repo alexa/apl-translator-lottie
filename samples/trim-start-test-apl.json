@@ -1,80 +1,77 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.0299700012207031)%150.000006109625}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1920,
-            "height": 1080,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M-454,0 C-454,0 434,0 434,0",
-                                    "fill": "rgb(254,185,0,1)",
-                                    "pathLength": 100,
-                                    "strokeDashArray": [
-                                        100,
-                                        100
-                                    ],
-                                    "strokeDashOffset": "-${@ease1(frame)}"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M-454,0 C-454,0 434,0 434,0",
-                                    "stroke": "rgb(212,28,28,1)",
-                                    "strokeWidth": 17,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter",
-                                    "strokeDashArray": [
-                                        100,
-                                        100
-                                    ],
-                                    "strokeDashOffset": "-${@ease1(frame)}",
-                                    "pathLength": 100
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 960,
-                    "translateY": 540
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {
-                        "ease1": "curve(73,0,0.167,0.167,0.833,0.833) end(139.000005661586,100)"
-                    }
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1920,
+      "height": 1080,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%150.000006109625}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M-454,0 C-454,0 434,0 434,0",
+                "fill": "rgb(254,185,0,1)",
+                "pathLength": 100,
+                "strokeDashArray": [
+                  100,
+                  100
+                ],
+                "strokeDashOffset": "-${@ease1(frame)}"
+              },
+              {
+                "type": "path",
+                "pathData": "M-454,0 C-454,0 434,0 434,0",
+                "stroke": "rgb(212,28,28,1)",
+                "strokeWidth": 17,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  100,
+                  100
+                ],
+                "strokeDashOffset": "-${@ease1(frame)}",
+                "pathLength": 100
+              }
+            ],
+            "type": "group",
+            "translateX": 960,
+            "translateY": 540
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "curve(73,0,0.167,0.167,0.833,0.833) end(139.000005661586,100)"
+          }
+        }
+      ]
+    }
+  }
 }

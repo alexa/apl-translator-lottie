@@ -13,8 +13,7 @@
       "width": "100%",
       "height": "100%",
       "scale": "best-fit",
-      "align": "center",
-      "frame": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+      "align": "center"
     }
   },
   "graphics": {
@@ -23,63 +22,66 @@
       "version": "1.2",
       "width": 444,
       "height": 237,
-      "items": [
-        {
-          "items": [
-            {
-              "translateX": -100.472,
-              "translateY": -1.455,
-              "items": [
-                {
-                  "type": "path",
-                  "pathData": "M-89.5285,-96.045 l179.057,0 l0,192.09 l-179.057,0 z",
-                  "fill": "@gradient1000",
-                  "fillTransform": "scale(1,0.9321515956062262) translate(0, 0.0363934389607779)"
-                },
-                {
-                  "type": "path",
-                  "pathData": "M-89.5285,-96.045 l179.057,0 l0,192.09 l-179.057,0 z",
-                  "stroke": "rgb(0,0,0,1)",
-                  "strokeWidth": 1,
-                  "strokeLineCap": "butt",
-                  "strokeLineJoin": "miter"
-                }
-              ],
-              "type": "group"
-            },
-            {
-              "translateX": 98.875,
-              "translateY": 3.375,
-              "items": [
-                {
-                  "type": "path",
-                  "pathData": "M0,-61.875 a61.875,61.875 0 0 1  0,123.75 a61.875,61.875 0 0 1  0,-123.75",
-                  "fill": "@gradient1001",
-                  "fillTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5, -0.5)"
-                },
-                {
-                  "type": "path",
-                  "pathData": "M0,-61.875 a61.875,61.875 0 0 1  0,123.75 a61.875,61.875 0 0 1  0,-123.75",
-                  "stroke": "rgb(0,0,0,1)",
-                  "strokeWidth": 1,
-                  "strokeLineCap": "butt",
-                  "strokeLineJoin": "miter"
-                }
-              ],
-              "type": "group"
-            }
-          ],
-          "type": "group",
-          "translateX": 222,
-          "translateY": 118.5
-        }
-      ],
-      "parameters": [
-        {
-          "name": "frame",
-          "value": 0
-        }
-      ],
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%900.000036657751}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "items": [
+                  {
+                    "type": "path",
+                    "pathData": "M89.5285,-96.045 l0,192.09 l-179.057,0 l0,-192.09 z",
+                    "fill": "@gradient1000",
+                    "fillTransform": "scale(1,0.9321515956062262) translate(0, 0.0363934389607779)"
+                  },
+                  {
+                    "type": "path",
+                    "pathData": "M89.5285,-96.045 l0,192.09 l-179.057,0 l0,-192.09 z",
+                    "stroke": "rgb(0,0,0,1)",
+                    "strokeWidth": 1,
+                    "strokeLineCap": "butt",
+                    "strokeLineJoin": "miter"
+                  }
+                ],
+                "type": "group",
+                "translateX": -100.472,
+                "translateY": -1.455
+              },
+              {
+                "items": [
+                  {
+                    "type": "path",
+                    "pathData": "M0,-61.875 a61.875,61.875 0 0 1  0,123.75 a61.875,61.875 0 0 1  0,-123.75",
+                    "fill": "@gradient1001",
+                    "fillTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5, -0.5)"
+                  },
+                  {
+                    "type": "path",
+                    "pathData": "M0,-61.875 a61.875,61.875 0 0 1  0,123.75 a61.875,61.875 0 0 1  0,-123.75",
+                    "stroke": "rgb(0,0,0,1)",
+                    "strokeWidth": 1,
+                    "strokeLineCap": "butt",
+                    "strokeLineJoin": "miter"
+                  }
+                ],
+                "type": "group",
+                "translateX": 98.875,
+                "translateY": 3.375
+              }
+            ],
+            "type": "group",
+            "translateX": 222,
+            "translateY": 118.5
+          }
+        ]
+      },
       "resources": [
         {
           "easing": {}

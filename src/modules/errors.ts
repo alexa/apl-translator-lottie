@@ -82,6 +82,10 @@ export const ERRORS = {
     NOT_SUPPORTED_FEATURE: {
         id: 'LOTTIE_NOT_SUPPORTED',
         message: ''
+    },
+    ALPHA_GRADIENT_LOCATION_MISMATCH: {
+        type: 'alpha-gradient-location',
+        message: 'Different locations for rgb and alpha codes are not currently supported, resulting in altered opacity. For optimal results, alpha should be located directly with rgb.'
     }
 };
 
@@ -138,10 +142,10 @@ export const LAYER_ITEM_PROP_ERROR_MAP = {
         type: 'has-mask',
         message: '"Mask" property is not fully supported.'
     },
-    td: {
+    tt: {
         id: 'LOTTIE_ERRORS_MATTES',
         type: 'has-mattes',
-        message: '"Mattes" property is not fully supported.'
+        message: '"Mattes" property is not fully supported. We only support Matte Mode "Normal" ("tt" = 0) and "Alpha" ("tt" = 1).'
     },
     cl: {
         id: 'LOTTIE_ERRORS_CLASS',

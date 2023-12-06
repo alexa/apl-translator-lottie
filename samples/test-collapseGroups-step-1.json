@@ -1,0 +1,380 @@
+{
+  "type": "AVG",
+  "version": "1.2",
+  "width": 1920,
+  "height": 1080,
+  "items": [
+    {
+      "type": "group",
+      "items": []
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "path"
+                    },
+                    {
+                      "type": "path"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "opacity": 0,
+      "items": [
+        {
+          "type": "group",
+          "opacity": 1.5,
+          "items": [
+            {
+              "type": "path"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "translateX": 0,
+      "translateY": "0",
+      "pivotX": 0,
+      "pivotY": "0",
+      "rotation": 0,
+      "scaleX": 1,
+      "scaleY": "1",
+      "opacity": 1,
+      "items": [
+        {
+          "type": "group",
+          "pivotX": 123,
+          "pivotY": "${@ease(frame)",
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": "1",
+          "items": [
+            {
+              "type": "group",
+              "translateX": 123,
+              "translateY": "123",
+              "pivotX": 12.3,
+              "pivotY": "12.3",
+              "rotation": -123,
+              "scaleX": "-123",
+              "scaleY": -12.3,
+              "opacity": "-12.3",
+              "items": [
+                {
+                  "type": "group",
+                  "translateX": "${@ease(frame)}",
+                  "translateY": "${-@ease(frame)}",
+                  "pivotX": "${@ease(frame)+1}",
+                  "pivotY": "${0.25* @ease(frame)}",
+                  "rotation": "${200 + @ease(frame)- 1 * (-90.2/2)}",
+                  "scaleX": "${@ease(frame)}",
+                  "scaleY": "${@ease(frame)}",
+                  "opacity": "${@ease(frame)}",
+                  "items": [
+                    {
+                      "type": "group",
+                      "translateX": -123,
+                      "translateY": "-123",
+                      "opacity": "${-@ease(frame)}",
+                      "items": [
+                        {
+                          "items": [
+                            {
+                              "type": "path",
+                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                              "fill": "rgb(123,223,223,1)"
+                            }
+                          ],
+                          "translateX": 200,
+                          "translateY": 500,
+                          "type": "group"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "translateX": "${@ease(frame)}",
+      "translateY": "${-@ease(frame)}",
+      "pivotX": "${@ease(frame)+1}",
+      "pivotY": "${0.25* @ease(frame)}",
+      "rotation": "${200 + @ease(frame)- 1 * (-90.2/2)}",
+      "scaleX": "${@ease(frame)}",
+      "scaleY": "${@ease(frame)}",
+      "opacity": "${@ease(frame)}",
+      "items": [
+        {
+          "type": "group",
+          "translateX": 123,
+          "translateY": "123",
+          "opacity": "-12.3",
+          "items": [
+            {
+              "type": "group",
+              "translateX": 123,
+              "translateY": "123",
+              "pivotX": 12.3,
+              "pivotY": "12.3",
+              "rotation": -123,
+              "scaleX": "-123",
+              "scaleY": -12.3,
+              "opacity": "-12.3",
+              "items": [
+                {
+                  "type": "group",
+                  "translateX": "${@ease(frame)}",
+                  "translateY": "${-@ease(frame)}",
+                  "pivotX": "${@ease(frame)+1}",
+                  "pivotY": "${0.25* @ease(frame)}",
+                  "rotation": "${200 + @ease(frame)- 1 * (-90.2/2)}",
+                  "scaleX": "${@ease(frame)}",
+                  "scaleY": "${@ease(frame)}",
+                  "opacity": "${@ease(frame)}",
+                  "items": [
+                    {
+                      "items": [
+                        {
+                          "type": "path",
+                          "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                          "fill": "rgb(123,223,223,1)"
+                        }
+                      ],
+                      "translateX": 400,
+                      "translateY": 500,
+                      "type": "group"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "translateX": "${@ease(frame)}",
+              "translateY": "${-@ease(frame)}",
+              "opacity": "${@ease(frame)}",
+              "items": [
+                {
+                  "type": "group",
+                  "translateX": "${@ease(frame)}",
+                  "translateY": "${-@ease(frame)}",
+                  "pivotX": "${@ease(frame)+1}",
+                  "pivotY": "${0.25* @ease(frame)}",
+                  "rotation": "${200 + @ease(frame)- 1 * (-90.2/2)}",
+                  "scaleX": "${@ease(frame)}",
+                  "scaleY": "${@ease(frame)}",
+                  "opacity": "${@ease(frame)}",
+                  "items": [
+                    {
+                      "type": "group",
+                      "translateX": 123,
+                      "translateY": "123",
+                      "opacity": "-12.3",
+                      "items": [
+                        {
+                          "items": [
+                            {
+                              "type": "path",
+                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                              "fill": "rgb(123,223,223,1)"
+                            }
+                          ],
+                          "translateX": -600,
+                          "translateY": -500,
+                          "type": "group"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "translateX": 123,
+                  "translateY": "123",
+                  "pivotX": 12.3,
+                  "pivotY": "12.3",
+                  "rotation": -123,
+                  "scaleX": "-123",
+                  "scaleY": -12.3,
+                  "opacity": "${frame >= 100 && frame <= 200 ? 1 : 0}",
+                  "items": [
+                    {
+                      "type": "group",
+                      "translateX": 100,
+                      "translateY": "100",
+                      "rotation": -100,
+                      "scaleX": "2",
+                      "scaleY": 2,
+                      "opacity": 0.5,
+                      "items": [
+                        {
+                          "type": "group",
+                          "translateX": -100,
+                          "translateY": "-100",
+                          "rotation": 100,
+                          "scaleX": "0.5",
+                          "scaleY": 0.5,
+                          "opacity": "2",
+                          "items": [
+                            {
+                              "type": "group",
+                              "translateX": 100,
+                              "translateY": "100",
+                              "pivotX": 100,
+                              "pivotY": "100",
+                              "rotation": -100,
+                              "scaleX": "2",
+                              "scaleY": 2,
+                              "opacity": 0.5,
+                              "items": [
+                                {
+                                  "type": "group",
+                                  "translateX": 100,
+                                  "translateY": "100",
+                                  "opacity": "0.5",
+                                  "items": [
+                                    {
+                                      "type": "group",
+                                      "translateX": -100,
+                                      "translateY": "-100",
+                                      "opacity": "4",
+                                      "items": [
+                                        {
+                                          "items": [
+                                            {
+                                              "type": "path",
+                                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                                              "fill": "rgb(123,223,223,1)"
+                                            }
+                                          ],
+                                          "translateX": 800,
+                                          "translateY": 500,
+                                          "type": "group"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "translateX": "${@ease(frame)}",
+      "translateY": "${-@ease(frame)}",
+      "items": [
+        {
+          "type": "group",
+          "translateX": 100,
+          "translateY": "100",
+          "clipPath": "test",
+          "items": [
+            {
+              "type": "group",
+              "translateX": 100,
+              "translateY": "100",
+              "items": [
+                {
+                  "type": "group",
+                  "translateX": "${@ease(frame)}",
+                  "translateY": "${-@ease(frame)}",
+                  "items": [
+                    {
+                      "type": "path",
+                      "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                      "fill": "rgb(123,223,223,1)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "translateX": "${@ease(frame)}",
+      "translateY": "${-@ease(frame)}",
+      "scaleX": 1.5,
+      "items": [
+        {
+          "type": "group",
+          "translateX": 100,
+          "translateY": "100",
+          "items": [
+            {
+              "type": "group",
+              "translateX": 100,
+              "translateY": "100",
+              "rotation": 50,
+              "items": [
+                {
+                  "type": "group",
+                  "translateX": "${@ease(frame)}",
+                  "translateY": "${-@ease(frame)}",
+                  "items": [
+                    {
+                      "type": "path",
+                      "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                      "fill": "rgb(123,223,223,1)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "name": "frame",
+      "value": 0
+    }
+  ],
+  "resources": [
+    {
+      "easing": {
+        "ease": "line(0,100) line(100,200) end(200,100)"
+      }
+    }
+  ]
+}

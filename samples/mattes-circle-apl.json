@@ -1,72 +1,69 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.06)%180}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1312,
-            "height": 736,
-            "items": [
-                {
-                    "type": "group",
-                    "clipPath": "M583.238,211.9995 a161.2385,161.2385 0 0 1  0,322.477 a161.2385,161.2385 0 0 1  0,-322.477",
-                    "items": {
-                        "items": [
-                            {
-                                "translateX": -22.734,
-                                "translateY": -12.75,
-                                "items": [
-                                    {
-                                        "type": "path",
-                                        "pathData": "M-317.2655,-199.25 l634.531,0 l0,398.5 l-634.531,0 z",
-                                        "fill": "rgb(0,231,254,1)"
-                                    },
-                                    {
-                                        "type": "path",
-                                        "pathData": "M-317.2655,-199.25 l634.531,0 l0,398.5 l-634.531,0 z",
-                                        "stroke": "rgb(212,28,28,1)",
-                                        "strokeWidth": 2,
-                                        "strokeLineCap": "butt",
-                                        "strokeLineJoin": "miter"
-                                    }
-                                ],
-                                "type": "group"
-                            }
-                        ],
-                        "type": "group",
-                        "translateX": 656,
-                        "translateY": 368
-                    }
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {}
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1312,
+      "height": 736,
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.06)%180}"
+          }
+        ],
+        "items": [
+          {
+            "type": "group",
+            "items": [
+              {
+                "items": [
+                  {
+                    "type": "path",
+                    "pathData": "M317.2655,-199.25 l0,398.5 l-634.531,0 l0,-398.5 z",
+                    "fill": "rgb(0,231,254,1)"
+                  },
+                  {
+                    "type": "path",
+                    "pathData": "M317.2655,-199.25 l0,398.5 l-634.531,0 l0,-398.5 z",
+                    "stroke": "rgb(212,28,28,1)",
+                    "strokeWidth": 2,
+                    "strokeLineCap": "butt",
+                    "strokeLineJoin": "miter"
+                  }
+                ],
+                "type": "group",
+                "translateX": 633.266,
+                "translateY": 355.25
+              }
+            ],
+            "clipPath": "M${656+(-72.762+(0)*1)*1},${368+(5.238+(-161.2385)*1)*1} a${0+(0+(161.2385)*1)*1},${0+(0+(161.2385)*1)*1} 0 0 1  ${0+(0+(0)*1)*1},${0+(0+(322.477)*1)*1} a${0+(0+(161.2385)*1)*1},${0+(0+(161.2385)*1)*1} 0 0 1  ${0+(0+(0)*1)*1},${0+(0+(-322.477)*1)*1}"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {}
+        }
+      ]
+    }
+  }
 }

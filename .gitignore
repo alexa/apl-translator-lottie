@@ -6,7 +6,7 @@ node_modules
 npm-debug.log
 
 # OS Files
-.DS_store
+.DS_Store
 build
 lib
 

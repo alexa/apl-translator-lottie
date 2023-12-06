@@ -13,8 +13,7 @@
       "width": "100%",
       "height": "100%",
       "scale": "best-fit",
-      "align": "center",
-      "frame": "${(elapsedTime*0.06)%201}"
+      "align": "center"
     }
   },
   "graphics": {
@@ -23,41 +22,39 @@
       "version": "1.2",
       "width": 800,
       "height": 600,
-      "items": [
-        {
-          "items": [
-            {
-              "items": [
-                {
-                  "type": "path",
-                  "pathData": "M2.5160000000000196,-254.52300000000008 a250,250 0 0 1  -5.032000000000039,509.04600000000016 a250,250 0 0 1  5.032000000000039,-509.04600000000016",
-                  "stroke": "@gradient1000",
-                  "strokeTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)",
-                  "strokeWidth": 50,
-                  "strokeLineCap": "round",
-                  "strokeLineJoin": "miter",
-                  "strokeDashArray": [
-                    "${@ease2(frame)}",
-                    100
-                  ],
-                  "strokeDashOffset": "-${@ease1(frame)}",
-                  "pathLength": 100
-                }
-              ],
-              "type": "group"
-            }
-          ],
-          "type": "group",
-          "translateX": 400,
-          "translateY": 300
-        }
-      ],
-      "parameters": [
-        {
-          "name": "frame",
-          "value": 0
-        }
-      ],
+      "items": {
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.06)%201}"
+          }
+        ],
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M0,-250 a250,250 0 0 1  0,500 a250,250 0 0 1  0,-500",
+                "stroke": "@gradient1000",
+                "strokeTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)",
+                "strokeWidth": 50,
+                "strokeLineCap": "round",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  "${@ease2(frame)}",
+                  100
+                ],
+                "strokeDashOffset": "-${@ease1(frame)}",
+                "pathLength": 100
+              }
+            ],
+            "type": "group",
+            "translateX": 400,
+            "translateY": 300
+          }
+        ]
+      },
       "resources": [
         {
           "easing": {

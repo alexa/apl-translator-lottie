@@ -1,87 +1,82 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-      "parameters": [
-        "payload"
-      ],
+  "type": "APL",
+  "version": "1.9",
+  "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
+  "theme": "light",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
+    }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1920,
+      "height": 1080,
       "items": {
-        "type": "VectorGraphic",
-        "source": "myGraphic",
-        "width": "100%",
-        "height": "100%",
-        "scale": "best-fit",
-        "align": "center",
-        "frame": "${(elapsedTime*0.0299700012207031)%58.0000023623884}"
-      }
-    },
-    "graphics": {
-      "myGraphic": {
-        "type": "AVG",
-        "version": "1.2",
-        "width": 1920,
-        "height": 1080,
+        "type": "group",
+        "bind": [
+          {
+            "name": "frame",
+            "value": "${(elapsedTime*0.0299700012207031)%58.0000023623884}"
+          }
+        ],
         "items": [
           {
             "items": [
               {
-                "translateX": 41.771,
-                "translateY": 15.709,
-                "items": [
-                  {
-                    "type": "path",
-                    "pathData": "M0,-361.4005 a361.4005,361.4005 0 0 1  0,722.801 a361.4005,361.4005 0 0 1  0,-722.801",
-                    "fill": {
-                      "type": "linear",
-                      "inputRange": [
-                        0,
-                        0.5,
-                        1
-                      ],
-                      "colorRange": [
-                        "rgb(255,0,0)",
-                        "rgb(254,128,0)",
-                        "rgb(254,255,0)"
-                      ],
-                      "x1": "${((@ease1(frame)+361.4005)/722.801)}",
-                      "x2": 0.6383506663659846,
-                      "y1": 0.5,
-                      "y2": 0.5
-                    },
-                    "fillTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)"
-                  },
-                  {
-                    "type": "path",
-                    "pathData": "M0,-361.4005 a361.4005,361.4005 0 0 1  0,722.801 a361.4005,361.4005 0 0 1  0,-722.801",
-                    "stroke": "rgb(255,255,255,1)",
-                    "strokeWidth": 2,
-                    "strokeLineCap": "butt",
-                    "strokeLineJoin": "miter"
-                  }
-                ],
-                "type": "group"
+                "type": "path",
+                "pathData": "M0,-361.4005 a361.4005,361.4005 0 0 1  0,722.801 a361.4005,361.4005 0 0 1  0,-722.801",
+                "fill": {
+                  "type": "linear",
+                  "inputRange": [
+                    0,
+                    0.5,
+                    1
+                  ],
+                  "colorRange": [
+                    "rgb(255,0,0)",
+                    "rgb(254,128,0)",
+                    "rgb(254,255,0)"
+                  ],
+                  "x1": "${((@ease1(frame)+361.4005)/722.801)}",
+                  "x2": 0.6383506663659846,
+                  "y1": 0.5,
+                  "y2": 0.5
+                },
+                "fillTransform": "translate(0.5, 0.5) scale(1,1) translate(-0.5,-0.5)"
+              },
+              {
+                "type": "path",
+                "pathData": "M0,-361.4005 a361.4005,361.4005 0 0 1  0,722.801 a361.4005,361.4005 0 0 1  0,-722.801",
+                "stroke": "rgb(255,255,255,1)",
+                "strokeWidth": 2,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter"
               }
             ],
             "type": "group",
-            "translateX": 960,
-            "translateY": 540
-          }
-        ],
-        "parameters": [
-          {
-            "name": "frame",
-            "value": 0
-          }
-        ],
-        "resources": [
-          {
-            "easing": {
-              "ease1": "spatial(2,0) scurve(0,-386,0,128.667,0,-128.667,0,0.167,0.167,0.833,0.833) scurve(29,386,0,0,0,0,0,0.167,0.167,0.833,0.833) scurve(59,-386,0,0,0,0,0,0.167,0.167,0.833,0.833) send(60.0000024438501,386,0)"
-            }
+            "translateX": 1001.771,
+            "translateY": 555.709
           }
         ]
-      }
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "spatial(2,0) scurve(0,-386,0,128.667,0,-128.667,0,0.167,0.167,0.833,0.833) scurve(29,386,0,0,0,0,0,0.167,0.167,0.833,0.833) scurve(59,-386,0,0,0,0,0,0.167,0.167,0.833,0.833) send(60.0000024438501,386,0)"
+          }
+        }
+      ]
     }
   }
+}

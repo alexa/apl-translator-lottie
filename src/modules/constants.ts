@@ -315,3 +315,19 @@ export const SHAPES = {
 };
 
 export const CONVERT_COMPLETED = 1; // constant to indicate convert progress is completed
+
+export const TYPE = 'type';
+export const ITEMS = 'items';
+export const GROUP = 'group';
+export const TRANSLATE = 'translate';
+export const TRANSLATE_X = 'translateX';
+export const TRANSLATE_Y = 'translateY';
+export const PIVOT = 'pivot';
+export const PIVOT_X = 'pivotX';
+export const PIVOT_Y = 'pivotY';
+export const ROTATION = 'rotation';
+export const SCALE = 'scale';
+export const SCALE_X = 'scaleX';
+export const SCALE_Y = 'scaleY';
+export const OPACITY = 'opacity';
+export const CLIPPATH = 'clipPath';

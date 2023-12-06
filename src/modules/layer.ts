@@ -57,8 +57,8 @@ const COMMON_LAYER_MAP = {
     },
     ef: "_effects",
     parent: "_parent",
-    td: "_maskType", // This means current layer is a mask
-    tt: "_maskPrevious",  // Set the mask type on the previous layer, 1 = alpha matte (supported), 2 = inverted matte, 3 = luma matte, 4 = luma inverted matte
+    td: "_matteTarget", // If set to 1, it means a layer is using this layer as a track matte
+    tt: "_matteMode",  // Defines the track matte mode for the layer, 0 = no matte (supported), 1 = alpha matte (supported), 2 = inverted matte, 3 = luma matte, 4 = luma inverted matte
     hasMask: "_hasMask",
     masksProperties: {
         name: "_masks",
@@ -239,6 +239,7 @@ const logLayerPropErrors = (layerElement: object) => {
             if (layerElement.hasOwnProperty(unsupportedProp)) {
                 if (unsupportedProp === 'ddd' && !layerElement[unsupportedProp]) return;
                 if (unsupportedProp === 'sr' && layerElement[unsupportedProp] == 1) return;
+                if (unsupportedProp === 'tt' && (layerElement[unsupportedProp] == 0 || layerElement[unsupportedProp] == 1)) return;
                 logs.errors.push(LAYER_ITEM_PROP_ERROR_MAP[unsupportedProp]);
             }
         }
@@ -280,15 +281,15 @@ const parseAsset = (asset, path, json) => {
  * Apply Alpha Mattes to its previous layers
  */
 const applyAlphaMatte = (items) => {
-    let maskLayers = [];
+    let matteLayers = [];
     return items.slice().reverse().map((item: any) => {
         try {
-            if (maskLayers.length > 0 && item._maskPrevious === 1) {
-                let maskedItem = maskLayers.pop();
-                maskedItem.items = item;
-                return maskedItem;
+            if (matteLayers.length > 0 && item._matteMode === 1) {
+                let matteTargetItem = matteLayers.pop();
+                matteTargetItem.items = item;
+                return matteTargetItem;
             }
-            if (item._maskType === 1) {
+            if (item._matteTarget === 1) {
                 let pathGroup = item._paths[0]?.group;
                 let path = pathGroup._paths[0]?.path;
 
@@ -312,12 +313,12 @@ const applyAlphaMatte = (items) => {
                     );
                 }
 
-                let maskLayerWrapper = {
+                let matteLayerWrapper = {
                     type: "group",
                     clipPath: pathData2Str(path),
                     _layerIndex: item._layerIndex
                 };
-                maskLayers.push(maskLayerWrapper);
+                matteLayers.push(matteLayerWrapper);
                 return undefined;
             } else {
                 return item;
@@ -373,7 +374,7 @@ export const fixParentLayers = (items: any, emitter?: EventEmitter, completed?: 
     }, []);
 
     parsedItems.forEach(item => {
-        if (item.items && Array.isArray(item.items) && item.items.some(obj => obj._maskPrevious || obj._maskType)) {
+        if (item.items && Array.isArray(item.items) && item.items.some(obj => obj._matteMode || obj._matteTarget)) {
             // parse alpha matte in the sub-items
             item.items = applyAlphaMatte(item.items);
         }

@@ -17,6 +17,7 @@
 import { resources } from './modules/value';
 import { fixParentLayers, parseLayer } from './modules/layer';
 import { clean } from './modules/clean';
+import { collapseGroups } from "./modules/collapseGroups";
 import { logs } from './modules/logs'
 import { updateConvertProgress } from './modules/utils';
 import animationUtil from './modules/animationUtil';
@@ -90,12 +91,6 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
         width: json.w,
         height: json.h,
         items: items,
-        parameters: [
-            {
-                name: 'frame',
-                value: 0
-            }
-        ],
         resources: resources.get(),
         _description: json.nm,
     };
@@ -103,14 +98,33 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
 
     if (strip) {
         result = clean(result);
+        try {
+            result = collapseGroups(result);
+        } catch (error) {
+            console.warn('Failed collapsing unnecessary groups with combinding props.');
+            try {
+                // try again without props combining
+                result = collapseGroups(result, false);
+            } catch (error) {
+                console.warn('Failed collapsing unnecessary groups without combinding props.');
+            }
+        }
     }
 
+    let timeExpression = "(elapsedTime*" + (result._frameRate / 1000) + ")%" + (result._end - result._start);
+    if (result._start != 0) {
+        timeExpression = result._start + "+(" + timeExpression + ")";
+    }
+    // wrap items with a group for data binding
+    result.items = {
+        type: 'group',
+        bind: [{
+            name: "frame",
+            value: '${' + timeExpression + '}'
+        }],
+        items: result.items
+    };
     if (wrap) {
-        let timeExpression = "(elapsedTime*" + (result._frameRate / 1000) + ")%" + (result._end - result._start);
-        if (result._start != 0) {
-            timeExpression = result._start + "+(" + timeExpression + ")";
-        }
-
         result = {
             type: 'APL',
             version: '1.9',
@@ -123,8 +137,7 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
                     width: '100%',
                     height: '100%',
                     scale: 'best-fit',
-                    align: 'center',
-                    frame: '${' + timeExpression + '}'
+                    align: 'center'
                 }
             },
             graphics: {
@@ -143,4 +156,5 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
     return result;
 }
 
-export default parseLottie
+export default parseLottie;
+
