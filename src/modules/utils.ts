@@ -232,10 +232,11 @@ export const processEllipseShape = (x) => {
  */
 export const assignTransform = (map, transform) => {
     const { _positionX, _positionY, pivotX, pivotY, scaleX, scaleY, rotation, opacity } = transform;
-    let tx = _positionX.subtract(pivotX);
-    if (!tx.equals(0)) { map['translateX'] = tx.embed(); }
+    const { _layerType } = map;
 
-    let ty = _positionY.subtract(pivotY);
+    let tx = _positionX.subtract(_layerType === 2 ? pivotX.multiply(scaleX) : pivotX);    if (!tx.equals(0)) { map['translateX'] = tx.embed(); }
+
+    let ty = _positionY.subtract(_layerType === 2 ? pivotY.multiply(scaleY) : pivotY);
     if (!ty.equals(0)) { map['translateY'] = ty.embed(); }
 
     if (!pivotX?.equals(0)) { map['pivotX'] = pivotX?.embed(); }

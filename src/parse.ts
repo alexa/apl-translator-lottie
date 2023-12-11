@@ -22,11 +22,12 @@ import { logs } from './modules/logs'
 import { updateConvertProgress } from './modules/utils';
 import animationUtil from './modules/animationUtil';
 import { EventEmitter } from 'events';
-import { CONVERT_COMPLETED } from './modules/constants';
+import { CONVERT_COMPLETED, PLAYBACK_SPEED_DEFAULT, REPEAT_MODE_DEFAULT, REPEAT_COUNT_DEFAULT } from './modules/constants';
 import { ERRORS } from './modules/errors';
 import { ValidateException } from './modules/validate';
 
 const BODYMOVIN_VERSION = '5.7.5'; // The Bodymovin plugin version that we fully supported
+const AVG_VERSION = '1.2';
 
 let completed = 0;
 
@@ -56,6 +57,7 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
         logs.errors.push(ERRORS.MARKERS)
     }
     let items = [];
+    let images = [];
     if (Array.isArray(json.layers)) {
         const numOfLayers: number = json.layers.length;
         json.layers.forEach((element: any, index: number) => {
@@ -68,7 +70,11 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
                     completed = progress;
                 }
                 if (item != null) {
-                    items.unshift(item);
+                    if (item.type === 'Image') {
+                        images.push(item);
+                    } else {
+                        items.unshift(item);
+                    }
                 }
             } catch (e) {
                 if (e instanceof ValidateException) {
@@ -82,53 +88,100 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
 
     items = fixParentLayers(items, emitter, completed);
 
-    let result: any = {
+    let myGraphic: any = {
         type: 'AVG',
-        version: '1.2',
+        version: AVG_VERSION,
         _start: json.ip,
         _end: json.op,
         _frameRate: json.fr,
         width: json.w,
         height: json.h,
-        items: items,
+        parameters: [],
+        items,
         resources: resources.get(),
         _description: json.nm,
     };
 
+    let aplDocument;
 
     if (strip) {
-        result = clean(result);
+        myGraphic = clean(myGraphic);
         try {
-            result = collapseGroups(result);
+            myGraphic = collapseGroups(myGraphic);
         } catch (error) {
             console.warn('Failed collapsing unnecessary groups with combinding props.');
             try {
                 // try again without props combining
-                result = collapseGroups(result, false);
+                myGraphic = collapseGroups(myGraphic, false);
             } catch (error) {
                 console.warn('Failed collapsing unnecessary groups without combinding props.');
             }
         }
     }
 
-    let timeExpression = "(elapsedTime*" + (result._frameRate / 1000) + ")%" + (result._end - result._start);
-    if (result._start != 0) {
-        timeExpression = result._start + "+(" + timeExpression + ")";
+    let timeExpression = "(elapsedTime*" + (myGraphic._frameRate / 1000) + ")%" + (myGraphic._end - myGraphic._start);
+    if (myGraphic._start != 0) {
+        timeExpression = myGraphic._start + "+(" + timeExpression + ")";
     }
-    // wrap items with a group for data binding
-    result.items = {
+
+    myGraphic.parameters = [
+        {
+            name: "playbackSpeed",
+            default: PLAYBACK_SPEED_DEFAULT
+        },
+        {
+            name: "repeatMode",
+            default: REPEAT_MODE_DEFAULT
+        },
+        {
+            name: "repeatCount",
+            default: REPEAT_COUNT_DEFAULT
+        }
+    ];
+
+    myGraphic.items = {
         type: 'group',
-        bind: [{
-            name: "frame",
-            value: '${' + timeExpression + '}'
-        }],
-        items: result.items
+        items: myGraphic.items,
+        bind: [
+            {
+                name: "frames",
+                value: myGraphic._end - myGraphic._start
+            },
+            {
+                name: "startFrame",
+                value: myGraphic._start
+            },
+            {
+                name: "__ELLAPSED_FRAME",
+                value: "${Math.abs(playbackSpeed) * (elapsedTime * " + myGraphic._frameRate / 1000 + ")}"
+            },
+            {
+                name: "__ELLAPSED_FRAME_CONSTRAINED",
+                value: "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+            },
+            {
+                name: "__FRAME",
+                value: "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+            },
+            {
+                name: "__SEESAWED_FRAME",
+                value: "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+            },
+            {
+                name: "__CURRENT_FRAME",
+                value: "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+            },
+            {
+                name: "frame",
+                value: "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
+            }
+        ]
     };
+
     if (wrap) {
-        result = {
+        aplDocument = {
             type: 'APL',
-            version: '1.9',
-            theme: 'light',
+            version: '2023.1',
             mainTemplate: {
                 parameters: ['payload'],
                 items: {
@@ -139,21 +192,52 @@ function parseLottie(json: any, strip: boolean, wrap: boolean, emitter?: EventEm
                     scale: 'best-fit',
                     align: 'center'
                 }
-            },
-            graphics: {
-                myGraphic: result
             }
         };
+
+        if (items.length > 0) {
+            aplDocument.graphics = { myGraphic };
+        }
+
+        if (images.length > 0) {
+            aplDocument.mainTemplate.items = {
+                type: "Container",
+                bind: [{
+                    name: "frame",
+                    value: '${' + timeExpression + '}'
+                }],
+                items: [],
+                height: "100%",
+                width: "100%"
+            };
+
+            if (items.length > 0) {
+                aplDocument.mainTemplate.items.items.push({
+                    type: 'VectorGraphic',
+                    source: 'myGraphic',
+                    width: '100%',
+                    height: '100%',
+                    scale: 'best-fit',
+                    align: 'center'
+                })
+            }
+    
+            aplDocument.resources = resources.get()
+
+            images.forEach(image => {
+                aplDocument.mainTemplate.items.items.unshift(image);
+            })
+        }
     }
 
-    if (result.type === 'AVG' || result.type === 'APL') {
+    if (aplDocument.type === 'AVG' || aplDocument.type === 'APL') {
         logs.success = true;
     }
 
     if (emitter) {
         emitter.emit('UpdateProgress', CONVERT_COMPLETED);
     }
-    return result;
+    return aplDocument;
 }
 
 export default parseLottie;

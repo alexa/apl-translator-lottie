@@ -1,7 +1,6 @@
 {
   "type": "APL",
-  "version": "1.9",
-  "theme": "light",
+  "version": "2023.1",
   "mainTemplate": {
     "parameters": [
       "payload"
@@ -21,14 +20,22 @@
       "version": "1.2",
       "width": 1920,
       "height": 1080,
+      "parameters": [
+        {
+          "name": "playbackSpeed",
+          "default": 1
+        },
+        {
+          "name": "repeatMode",
+          "default": "restart"
+        },
+        {
+          "name": "repeatCount",
+          "default": -1
+        }
+      ],
       "items": {
         "type": "group",
-        "bind": [
-          {
-            "name": "frame",
-            "value": "${(elapsedTime*0.0299700012207031)%150.000006109625}"
-          }
-        ],
         "items": [
           {
             "items": [
@@ -54,6 +61,40 @@
             "type": "group",
             "translateX": 1001.924,
             "translateY": 531.557
+          }
+        ],
+        "bind": [
+          {
+            "name": "frames",
+            "value": 150.000006109625
+          },
+          {
+            "name": "startFrame",
+            "value": 0
+          },
+          {
+            "name": "__ELLAPSED_FRAME",
+            "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.0299700012207031)}"
+          },
+          {
+            "name": "__ELLAPSED_FRAME_CONSTRAINED",
+            "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+          },
+          {
+            "name": "__FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+          },
+          {
+            "name": "__SEESAWED_FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+          },
+          {
+            "name": "__CURRENT_FRAME",
+            "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+          },
+          {
+            "name": "frame",
+            "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
           }
         ]
       },

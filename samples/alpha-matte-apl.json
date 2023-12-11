@@ -1,7 +1,6 @@
 {
     "type": "APL",
-    "version": "1.9",
-    "theme": "light",
+    "version": "2023.1",
     "mainTemplate": {
         "parameters": [
             "payload"
@@ -21,14 +20,22 @@
             "version": "1.2",
             "width": 1312,
             "height": 736,
+            "parameters": [
+                {
+                    "name": "playbackSpeed",
+                    "default": 1
+                },
+                {
+                    "name": "repeatMode",
+                    "default": "restart"
+                },
+                {
+                    "name": "repeatCount",
+                    "default": -1
+                }
+            ],
             "items": {
                 "type": "group",
-                "bind": [
-                    {
-                        "name": "frame",
-                        "value": "${(elapsedTime*0.06)%180}"
-                    }
-                ],
                 "items": [
                     {
                         "type": "group",
@@ -47,6 +54,40 @@
                             }
                         ],
                         "clipPath": "M${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} C${670.549+(@ease1(frame)+(47.193)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} ${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(-47.193)*1)*1} ${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(0)*1)*1} C${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(47.193)*1)*1} ${670.549+(@ease1(frame)+(47.193)*1)*1},${392.549+(-24.549+(85.451)*1)*1} ${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(85.451)*1)*1} C${670.549+(@ease1(frame)+(-47.193)*1)*1},${392.549+(-24.549+(85.451)*1)*1} ${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(47.193)*1)*1} ${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(0)*1)*1} C${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(-47.193)*1)*1} ${670.549+(@ease1(frame)+(-47.193)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} ${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} z"
+                    }
+                ],
+                "bind": [
+                    {
+                        "name": "frames",
+                        "value": 180
+                    },
+                    {
+                        "name": "startFrame",
+                        "value": 0
+                    },
+                    {
+                        "name": "__ELLAPSED_FRAME",
+                        "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.06)}"
+                    },
+                    {
+                        "name": "__ELLAPSED_FRAME_CONSTRAINED",
+                        "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+                    },
+                    {
+                        "name": "__FRAME",
+                        "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+                    },
+                    {
+                        "name": "__SEESAWED_FRAME",
+                        "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+                    },
+                    {
+                        "name": "__CURRENT_FRAME",
+                        "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+                    },
+                    {
+                        "name": "frame",
+                        "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
                     }
                 ]
             },

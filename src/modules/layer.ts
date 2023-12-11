@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-import { LAYER_ITEM_TYPE_ERROR_MAP, LAYER_ITEM_PROP_ERROR_MAP, SHAPE_ITEM_TYPE_ERROR_MAP } from './errors';
+import { LAYER_ITEM_TYPE_ERROR_MAP, LAYER_ITEM_PROP_ERROR_MAP, SHAPE_ITEM_TYPE_ERROR_MAP, ERRORS } from './errors';
 import { EventEmitter } from 'events';
 import { logs } from './logs';
 import { parseShapeItemArray } from './shape';
@@ -75,7 +75,7 @@ const COMMON_LAYER_MAP = {
             return masks;
         }
     },
-    nm: "_description",
+    nm: "_description"
 };
 
 const processCommonLayer = (map, json) => {
@@ -152,6 +152,68 @@ const processSolidLayer = (shape, path, json) => {
     return map;
 };
 
+// Process an Image Layer
+ 
+const IMAGE_LAYER_MAP = Object.assign({
+}, COMMON_LAYER_MAP);
+ 
+const processImageLayer = (shape, path, json) => {
+    const imageAsset = json.assets.find(asset => {
+        return asset.id === shape.refId;
+    })
+    let imageSource = '';
+    if (imageAsset) {
+        imageSource = imageAsset.e ? imageAsset.p : imageAsset.u + imageAsset.p
+    }
+    let map = validateMap("Image", shape, IMAGE_LAYER_MAP, path);
+    processCommonLayer(map, json);
+
+    const imageObject = {
+        type: 'Image',
+        width: imageAsset && imageAsset.w,
+        height: imageAsset && imageAsset.h,
+        position: 'absolute',
+        source: imageSource,
+        opacity: map.opacity,
+        transform: [
+        ],
+        _path: path
+    };
+
+    if (map.translateX || map.translateY) {
+        imageObject.transform.push({
+            translateX: map.translateX,
+            translateY: map.translateY
+        });
+    }
+
+    if (map.rotation) {
+        imageObject.transform.push({
+            rotate: map.rotation
+        });
+    }
+
+    if (map.scaleX || map.scaleY) {
+        // TODO: calculate the scale * w / h transform if scale is an ease function
+        if (typeof map.scaleX === 'number' && imageAsset) {
+            imageObject.transform.push({
+                translateX: -(imageAsset.w - imageAsset.w * map.scaleX) / 2,
+                translateY: -(imageAsset.h - imageAsset.h * map.scaleY) / 2,
+            });
+        }
+        imageObject.transform.push({
+            scaleX: map.scaleX,
+            scaleY: map.scaleY
+        });
+    }
+
+    if (shape.tt || shape.hasMask) {
+        logs.errors.push(ERRORS.UNSUPPORTED_IMAGE_FEATURES);
+    }
+
+    return imageObject;
+};
+
 /***************** Pre-comp Layer *****************/
 const processPreCompLayer = (shape, path, json) => {
     const PRE_COMP_LAYER_MAP = Object.assign({
@@ -196,16 +258,11 @@ const processPreCompLayer = (shape, path, json) => {
 /**
  * Layer Dispatch
  */
-export function parseLayer(element, path, json) {
+export const parseLayer = (element, path, json) => {
     const LAYERS = {
         0: processPreCompLayer,
         1: processSolidLayer,
-        2: (path) => {
-            return {
-                type: "ImageLayer",
-                _path: path
-            };
-        },
+        2: processImageLayer,
         3: processNullLayer,
         4: processShapeLayer,
         5: (path) => {
@@ -216,10 +273,13 @@ export function parseLayer(element, path, json) {
         }
     };
 
-    // log layer type errors:
-    const layerError = LAYER_ITEM_TYPE_ERROR_MAP[element.ty];
-    if (layerError) {
-        logs.errors.push(layerError);
+    
+    // log only text layer errors
+    if (element.ty === 5) {
+        const layerError = LAYER_ITEM_TYPE_ERROR_MAP[element.ty];
+        if (layerError) {
+            logs.errors.push(layerError);
+        }
     }
 
     // log layer property errors:
@@ -231,15 +291,15 @@ export function parseLayer(element, path, json) {
 
     throw new Error(`Unrecognized layer type ${element.ty} @${path}`);
 
-}
+};
 
-const logLayerPropErrors = (layerElement: object) => {
+const logLayerPropErrors = (layerElement: any) => {
     Object.keys(LAYER_ITEM_PROP_ERROR_MAP).forEach(
         unsupportedProp => {
             if (layerElement.hasOwnProperty(unsupportedProp)) {
                 if (unsupportedProp === 'ddd' && !layerElement[unsupportedProp]) return;
                 if (unsupportedProp === 'sr' && layerElement[unsupportedProp] == 1) return;
-                if (unsupportedProp === 'tt' && (layerElement[unsupportedProp] == 0 || layerElement[unsupportedProp] == 1)) return;
+                if (unsupportedProp === 'tt' && (layerElement[unsupportedProp] == 0 || layerElement[unsupportedProp] == 1 || layerElement.ty == 2)) return;
                 logs.errors.push(LAYER_ITEM_PROP_ERROR_MAP[unsupportedProp]);
             }
         }

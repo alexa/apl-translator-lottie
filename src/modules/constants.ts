@@ -331,3 +331,7 @@ export const SCALE_X = 'scaleX';
 export const SCALE_Y = 'scaleY';
 export const OPACITY = 'opacity';
 export const CLIPPATH = 'clipPath';
+
+export const PLAYBACK_SPEED_DEFAULT = 1.0;
+export const REPEAT_MODE_DEFAULT = "restart";
+export const REPEAT_COUNT_DEFAULT = -1;

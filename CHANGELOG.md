@@ -3,6 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.0] - 2023-12-11
 Various enhancements, fixes and samples:
+- Support image conversion
 - Define "frame" inside AVG instead of exposing as a paramter
 - Add a step to flatten unnecessary nested groups
 - Draw the rect from top right instead of top left
