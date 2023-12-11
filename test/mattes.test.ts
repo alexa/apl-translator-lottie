@@ -27,3 +27,7 @@ test('Convert non mattes example', () => {
 test('Convert circle mattes example', () => {
     testConverter('mattes-circle.json', 'mattes-circle-apl.json');
 });
+
+test('Convert polystar mattes sample', () => {
+    testConverter('mattes-sample-polystar.json', 'mattes-sample-polystar-apl.json');
+});

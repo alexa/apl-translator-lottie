@@ -1,0 +1,48 @@
+{
+    "type": "APL",
+    "version": "2023.1",
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": {
+            "type": "Container",
+            "bind": [
+                {
+                    "name": "frame",
+                    "value": "${(elapsedTime*0.0299700012207031)%150.000006109625}"
+                }
+            ],
+            "items": [
+                {
+                    "type": "Image",
+                    "width": 500,
+                    "height": 255,
+                    "position": "absolute",
+                    "source": "images/weather-cloud_R-small.png",
+                    "transform": [
+                        {
+                            "translateX": 151.9999999999999,
+                            "translateY": 88.49939999999998
+                        },
+                        {
+                            "translateX": 570.0000000000001,
+                            "translateY": 330.0006
+                        },
+                        {
+                            "scaleX": 3.2800000000000002,
+                            "scaleY": 3.5882400000000003
+                        }
+                    ]
+                }
+            ],
+            "height": "100%",
+            "width": "100%"
+        }
+    },
+    "resources": [
+        {
+            "easing": {}
+        }
+    ]
+}

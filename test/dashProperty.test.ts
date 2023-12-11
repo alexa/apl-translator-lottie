@@ -16,6 +16,10 @@
 
 import { testConverter } from './utils';
 
+test('Convert Rectangle shape with dash array', () => {
+    testConverter('rect-dash.json', 'rect-dash-apl.json');
+});
+
 test('Convert dash property - static', () => {
     testConverter('dashed-array-static.json', 'dashed-array-static-apl.json');
 });

@@ -1,0 +1,103 @@
+{
+    "type": "APL",
+    "version": "2023.1",
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": {
+            "type": "VectorGraphic",
+            "source": "myGraphic",
+            "width": "100%",
+            "height": "100%",
+            "scale": "best-fit",
+            "align": "center"
+        }
+    },
+    "graphics": {
+        "myGraphic": {
+            "type": "AVG",
+            "version": "1.2",
+            "width": 1312,
+            "height": 736,
+            "parameters": [
+                {
+                    "name": "playbackSpeed",
+                    "default": 1
+                },
+                {
+                    "name": "repeatMode",
+                    "default": "restart"
+                },
+                {
+                    "name": "repeatCount",
+                    "default": -1
+                }
+            ],
+            "items": {
+                "type": "group",
+                "items": [
+                    {
+                        "type": "group",
+                        "items": [
+                            {
+                                "items": [
+                                    {
+                                        "type": "path",
+                                        "pathData": "M0,-85.451 C47.193,-85.451 85.451,-47.193 85.451,0 C85.451,47.193 47.193,85.451 0,85.451 C-47.193,85.451 -85.451,47.193 -85.451,0 C-85.451,-47.193 -47.193,-85.451 0,-85.451 z",
+                                        "fill": "rgb(255,255,255,1)"
+                                    }
+                                ],
+                                "type": "group",
+                                "translateX": 656,
+                                "translateY": 368
+                            }
+                        ],
+                        "clipPath": "M${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} C${670.549+(@ease1(frame)+(47.193)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} ${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(-47.193)*1)*1} ${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(0)*1)*1} C${670.549+(@ease1(frame)+(85.451)*1)*1},${392.549+(-24.549+(47.193)*1)*1} ${670.549+(@ease1(frame)+(47.193)*1)*1},${392.549+(-24.549+(85.451)*1)*1} ${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(85.451)*1)*1} C${670.549+(@ease1(frame)+(-47.193)*1)*1},${392.549+(-24.549+(85.451)*1)*1} ${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(47.193)*1)*1} ${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(0)*1)*1} C${670.549+(@ease1(frame)+(-85.451)*1)*1},${392.549+(-24.549+(-47.193)*1)*1} ${670.549+(@ease1(frame)+(-47.193)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} ${670.549+(@ease1(frame)+(0)*1)*1},${392.549+(-24.549+(-85.451)*1)*1} z"
+                    }
+                ],
+                "bind": [
+                    {
+                        "name": "frames",
+                        "value": 180
+                    },
+                    {
+                        "name": "startFrame",
+                        "value": 0
+                    },
+                    {
+                        "name": "__ELLAPSED_FRAME",
+                        "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.06)}"
+                    },
+                    {
+                        "name": "__ELLAPSED_FRAME_CONSTRAINED",
+                        "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+                    },
+                    {
+                        "name": "__FRAME",
+                        "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+                    },
+                    {
+                        "name": "__SEESAWED_FRAME",
+                        "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+                    },
+                    {
+                        "name": "__CURRENT_FRAME",
+                        "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+                    },
+                    {
+                        "name": "frame",
+                        "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
+                    }
+                ]
+            },
+            "resources": [
+                {
+                    "easing": {
+                        "ease1": "spatial(2,0) scurve(0,166.609,-24.549,-62.881,0,62.881,0,0.167,0.167,0.833,0.833) send(165,-210.679,-24.549)"
+                    }
+                }
+            ]
+        }
+    }
+}

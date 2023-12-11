@@ -17,7 +17,7 @@
 import fs from 'fs';
 import { convertFile, fetchStats } from '../src';
 import { isJSON, expectConditionalEqual, loadSampleJson } from './utils';
-import { LAYER_ITEM_PROP_ERROR_MAP, LAYER_ITEM_TYPE_ERROR_MAP } from '../src/modules/errors';
+import { ERRORS, LAYER_ITEM_PROP_ERROR_MAP } from '../src/modules/errors';
 
 const outputPath = './test/';
 const samplePath = './samples/';
@@ -32,7 +32,6 @@ test('Convert basic image layer', () => {
     const AplOutput = convertFile(samplePath + sampleFileName);
     expect(fetchStats().success).toBeTruthy;
     expect(isJSON(AplOutput)).toBe(true);
-    expect(fetchStats().errors).toContain(LAYER_ITEM_TYPE_ERROR_MAP["2"]);
     fs.writeFileSync(outputPath + outputFileName, AplOutput);
     expectConditionalEqual(JSON.parse(AplOutput), loadSampleJson(outputFileName));
     fs.unlinkSync(outputPath + outputFileName);
@@ -42,12 +41,26 @@ test('Convert image layer + mask layer', () => {
     const sampleFileName = 'mask-layer-image.json';
     const outputFileName = 'mask-layer-image-apl.json';
 
-    const AplOutput = convertFile(samplePath + sampleFileName)
-    expect(fetchStats().success).toBeTruthy
-    expect(isJSON(AplOutput)).toBe(true)
-    expect(fetchStats().errors).toContain(LAYER_ITEM_PROP_ERROR_MAP.hasMask)
-    expect(fetchStats().errors).toContain(LAYER_ITEM_TYPE_ERROR_MAP["2"])
-    fs.writeFileSync(outputPath + outputFileName, AplOutput)
-    expectConditionalEqual(JSON.parse(AplOutput), loadSampleJson(outputFileName))
-    fs.unlinkSync(outputPath + outputFileName)
+    const AplOutput = convertFile(samplePath + sampleFileName);
+    expect(fetchStats().success).toBeTruthy;
+    expect(isJSON(AplOutput)).toBe(true);
+    expect(fetchStats().errors).not.toContain(LAYER_ITEM_PROP_ERROR_MAP.tt);
+    expect(fetchStats().errors).toContain(LAYER_ITEM_PROP_ERROR_MAP.hasMask);
+    fs.writeFileSync(outputPath + outputFileName, AplOutput);
+    expectConditionalEqual(JSON.parse(AplOutput), loadSampleJson(outputFileName));
+    fs.unlinkSync(outputPath + outputFileName);
+});
+
+test('Convert image layer with matte', () => {
+    const sampleFileName = 'matte-image.json';
+    const outputFileName = 'matte-image-apl.json';
+ 
+    const AplOutput = convertFile(samplePath + sampleFileName);
+    expect(fetchStats().success).toBeTruthy;
+    expect(isJSON(AplOutput)).toBe(true);
+    expect(fetchStats().errors).toContain(ERRORS.UNSUPPORTED_IMAGE_FEATURES);
+    expect(fetchStats().errors).not.toContain(LAYER_ITEM_PROP_ERROR_MAP.tt);
+    fs.writeFileSync(outputPath + outputFileName, AplOutput);
+    expect(fs.readFileSync(outputPath + outputFileName)).toEqual(fs.readFileSync(samplePath + outputFileName));
+    fs.unlinkSync(outputPath + outputFileName);
 });

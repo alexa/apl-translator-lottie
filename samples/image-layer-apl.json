@@ -1,44 +1,48 @@
 {
     "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
+    "version": "2023.1",
     "mainTemplate": {
         "parameters": [
             "payload"
         ],
         "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.0299700012207031)%91.000003706506}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1920,
-            "height": 1080,
-            "items": [
-                {
-                    "type": "ImageLayer"
-                }
-            ],
-            "parameters": [
+            "type": "Container",
+            "bind": [
                 {
                     "name": "frame",
-                    "value": 0
+                    "value": "${(elapsedTime*0.0299700012207031)%91.000003706506}"
                 }
             ],
-            "resources": [
+            "items": [
                 {
-                    "easing": {}
+                    "type": "Image",
+                    "width": 3000,
+                    "height": 2000,
+                    "position": "absolute",
+                    "source": "images/img_0.png",
+                    "transform": [
+                        {
+                            "translateX": 318,
+                            "translateY": 112
+                        },
+                        {
+                            "translateX": -858,
+                            "translateY": -572
+                        },
+                        {
+                            "scaleX": 0.428,
+                            "scaleY": 0.428
+                        }
+                    ]
                 }
-            ]
+            ],
+            "height": "100%",
+            "width": "100%"
         }
-    }
+    },
+    "resources": [
+        {
+            "easing": {}
+        }
+    ]
 }

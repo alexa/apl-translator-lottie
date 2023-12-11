@@ -1,108 +1,136 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.06)%60}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1312,
-            "height": 736,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M185.643,0 C185.643,0 252.479,0 252.479,0 C252.479,0 252.479,-20.8 252.479,-20.8 C252.479,-20.8 211.743,-20.8 211.743,-20.8 C211.743,-20.8 211.743,-84.467 211.743,-84.467 C211.743,-84.467 185.643,-84.467 185.643,-84.467 C185.643,-84.467 185.643,0 185.643,0 z",
-                                    "stroke": "rgb(255,255,255,1)",
-                                    "strokeWidth": 2,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter",
-                                    "strokeDashArray": [
-                                        "${@ease1((elapsedTime*0.06)%60*3-120)}",
-                                        100
-                                    ],
-                                    "strokeDashOffset": 0,
-                                    "pathLength": 100
-                                }
-                            ],
-                            "type": "group"
-                        },
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M100.312,0 C100.312,0 126.527,0 126.527,0 C126.527,0 126.527,-31.344 126.527,-31.344 C126.527,-31.344 140.816,-31.344 140.816,-31.344 C151.34,-31.344 159.16699999999997,-33.744 164.295,-38.546 C169.423,-43.347 171.987,-50.012 171.987,-58.539 C171.987,-66.836 169.63400000000001,-73.232 164.929,-77.726 C160.223,-82.22 153.14600000000002,-84.467 143.697,-84.467 C143.697,-84.467 100.312,-84.467 100.312,-84.467 C100.312,-84.467 100.312,0 100.312,0 z M126.527,-67.297 C126.527,-67.297 133.96,-67.297 133.96,-67.297 C138.83800000000002,-67.297 142.161,-66.375 143.928,-64.531 C145.694,-62.687000000000005 146.578,-60.44 146.578,-57.79 C146.578,-55.062 145.56,-52.825 143.524,-51.078 C141.488,-49.330000000000005 137.955,-48.456 132.923,-48.456 C132.923,-48.456 126.527,-48.456 126.527,-48.456 C126.527,-48.456 126.527,-67.297 126.527,-67.297 z",
-                                    "stroke": "rgb(255,255,255,1)",
-                                    "strokeWidth": 2,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter",
-                                    "strokeDashArray": [
-                                        "${@ease1((elapsedTime*0.06)%60*3-60)}",
-                                        100
-                                    ],
-                                    "strokeDashOffset": 0,
-                                    "pathLength": 100
-                                }
-                            ],
-                            "type": "group"
-                        },
-                        {
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M64.798,0 C64.798,0 92.13,0 92.13,0 C92.13,0 60.39,-84.467 60.39,-84.467 C60.39,-84.467 31.92,-84.467 31.92,-84.467 C31.92,-84.467 0.173,0 0.173,0 C0.173,0 26.823,0 26.823,0 C26.823,0 30.94,-13.943 30.94,-13.943 C30.94,-13.943 60.572,-13.943 60.572,-13.943 C60.572,-13.943 64.798,0 64.798,0 z M36.609,-32.208 C36.609,-32.208 45.834,-62.572 45.834,-62.572 C45.834,-62.572 55.158,-32.208 55.158,-32.208 C55.158,-32.208 36.609,-32.208 36.609,-32.208 z",
-                                    "stroke": "rgb(255,255,255,1)",
-                                    "strokeWidth": 2,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter",
-                                    "strokeDashArray": [
-                                        "${@ease1((elapsedTime*0.06)%60*3-0)}",
-                                        100
-                                    ],
-                                    "strokeDashOffset": 0,
-                                    "pathLength": 100
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 216,
-                    "translateY": 518,
-                    "scaleX": 3.5644299999999998,
-                    "scaleY": 3.5644299999999998
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {
-                        "ease1": "curve(0,0,0.167,0.167,0.833,0.833) end(59,100)"
-                    }
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "2023.1",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1312,
+      "height": 736,
+      "parameters": [
+        {
+          "name": "playbackSpeed",
+          "default": 1
+        },
+        {
+          "name": "repeatMode",
+          "default": "restart"
+        },
+        {
+          "name": "repeatCount",
+          "default": -1
+        }
+      ],
+      "items": {
+        "type": "group",
+        "items": [
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M185.643,0 C185.643,0 252.479,0 252.479,0 C252.479,0 252.479,-20.8 252.479,-20.8 C252.479,-20.8 211.743,-20.8 211.743,-20.8 C211.743,-20.8 211.743,-84.467 211.743,-84.467 C211.743,-84.467 185.643,-84.467 185.643,-84.467 C185.643,-84.467 185.643,0 185.643,0 z",
+                "stroke": "rgb(255,255,255,1)",
+                "strokeWidth": 2,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  "${@ease1((elapsedTime*0.06)%60*3-120)}",
+                  100
+                ],
+                "strokeDashOffset": 0,
+                "pathLength": 100
+              },
+              {
+                "type": "path",
+                "pathData": "M100.312,0 C100.312,0 126.527,0 126.527,0 C126.527,0 126.527,-31.344 126.527,-31.344 C126.527,-31.344 140.816,-31.344 140.816,-31.344 C151.34,-31.344 159.16699999999997,-33.744 164.295,-38.546 C169.423,-43.347 171.987,-50.012 171.987,-58.539 C171.987,-66.836 169.63400000000001,-73.232 164.929,-77.726 C160.223,-82.22 153.14600000000002,-84.467 143.697,-84.467 C143.697,-84.467 100.312,-84.467 100.312,-84.467 C100.312,-84.467 100.312,0 100.312,0 z M126.527,-67.297 C126.527,-67.297 133.96,-67.297 133.96,-67.297 C138.83800000000002,-67.297 142.161,-66.375 143.928,-64.531 C145.694,-62.687000000000005 146.578,-60.44 146.578,-57.79 C146.578,-55.062 145.56,-52.825 143.524,-51.078 C141.488,-49.330000000000005 137.955,-48.456 132.923,-48.456 C132.923,-48.456 126.527,-48.456 126.527,-48.456 C126.527,-48.456 126.527,-67.297 126.527,-67.297 z",
+                "stroke": "rgb(255,255,255,1)",
+                "strokeWidth": 2,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  "${@ease1((elapsedTime*0.06)%60*3-60)}",
+                  100
+                ],
+                "strokeDashOffset": 0,
+                "pathLength": 100
+              },
+              {
+                "type": "path",
+                "pathData": "M64.798,0 C64.798,0 92.13,0 92.13,0 C92.13,0 60.39,-84.467 60.39,-84.467 C60.39,-84.467 31.92,-84.467 31.92,-84.467 C31.92,-84.467 0.173,0 0.173,0 C0.173,0 26.823,0 26.823,0 C26.823,0 30.94,-13.943 30.94,-13.943 C30.94,-13.943 60.572,-13.943 60.572,-13.943 C60.572,-13.943 64.798,0 64.798,0 z M36.609,-32.208 C36.609,-32.208 45.834,-62.572 45.834,-62.572 C45.834,-62.572 55.158,-32.208 55.158,-32.208 C55.158,-32.208 36.609,-32.208 36.609,-32.208 z",
+                "stroke": "rgb(255,255,255,1)",
+                "strokeWidth": 2,
+                "strokeLineCap": "butt",
+                "strokeLineJoin": "miter",
+                "strokeDashArray": [
+                  "${@ease1((elapsedTime*0.06)%60*3-0)}",
+                  100
+                ],
+                "strokeDashOffset": 0,
+                "pathLength": 100
+              }
+            ],
+            "type": "group",
+            "translateX": 216,
+            "translateY": 518,
+            "scaleX": 3.5644299999999998,
+            "scaleY": 3.5644299999999998
+          }
+        ],
+        "bind": [
+          {
+            "name": "frames",
+            "value": 60
+          },
+          {
+            "name": "startFrame",
+            "value": 0
+          },
+          {
+            "name": "__ELLAPSED_FRAME",
+            "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.06)}"
+          },
+          {
+            "name": "__ELLAPSED_FRAME_CONSTRAINED",
+            "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+          },
+          {
+            "name": "__FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+          },
+          {
+            "name": "__SEESAWED_FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+          },
+          {
+            "name": "__CURRENT_FRAME",
+            "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+          },
+          {
+            "name": "frame",
+            "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "curve(0,0,0.167,0.167,0.833,0.833) end(59,100)"
+          }
+        }
+      ]
+    }
+  }
 }

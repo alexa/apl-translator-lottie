@@ -183,10 +183,10 @@ export const processRectShape = (x) => {
         pathData.push(Avg.createPathData(Avg.PathDataA, "a", rr, rr, 0, 0, 1, rr, nr));
         pathData.push(Avg.createPathData(Avg.PathDataZ, "z"));
     } else {
-        pathData.push(Avg.createPathData(Avg.PathDataM, "M", px.subtract(w2).embed(), py.subtract(h2).embed()));
-        pathData.push(Avg.createPathData(Avg.PathDataL, "l", x._sizeX.embed(), 0));
+        pathData.push(Avg.createPathData(Avg.PathDataM, "M", -px.subtract(w2).embed(), py.subtract(h2).embed()));
         pathData.push(Avg.createPathData(Avg.PathDataL, "l", 0, x._sizeY.embed()));
         pathData.push(Avg.createPathData(Avg.PathDataL, "l", -x._sizeX.embed(), 0));
+        pathData.push(Avg.createPathData(Avg.PathDataL, "l", 0, -x._sizeY.embed()));
         pathData.push(Avg.createPathData(Avg.PathDataZ, "z"));
     }
 
@@ -232,10 +232,11 @@ export const processEllipseShape = (x) => {
  */
 export const assignTransform = (map, transform) => {
     const { _positionX, _positionY, pivotX, pivotY, scaleX, scaleY, rotation, opacity } = transform;
-    let tx = _positionX.subtract(pivotX);
-    if (!tx.equals(0)) { map['translateX'] = tx.embed(); }
+    const { _layerType } = map;
 
-    let ty = _positionY.subtract(pivotY);
+    let tx = _positionX.subtract(_layerType === 2 ? pivotX.multiply(scaleX) : pivotX);    if (!tx.equals(0)) { map['translateX'] = tx.embed(); }
+
+    let ty = _positionY.subtract(_layerType === 2 ? pivotY.multiply(scaleY) : pivotY);
     if (!ty.equals(0)) { map['translateY'] = ty.embed(); }
 
     if (!pivotX?.equals(0)) { map['pivotX'] = pivotX?.embed(); }
@@ -315,58 +316,6 @@ export const copyGroupAndApplyFillStroke = (fs, group) => {
     return result;
 };
 
-const ELLIPSE: string = 'ellipse';
-
-const hasLinearStrokeBounds = (fs: any): boolean => {
-    return fs.stroke && fs.stroke.type === 'linear' && fs.stroke._bounds && fs.stroke._bounds.isDefined();
-};
-
-const fixEllipsePathData = (path: Avg.PathData[], fs: any): Avg.PathData[] => {
-    if (!hasLinearStrokeBounds(fs)) {
-        return path;
-    }
-    const bounds = fs.stroke._bounds;
-
-    const left = bounds.left();
-    const top = bounds.top();
-    const width = bounds.width();
-    const height = bounds.height();
-    // Note: AVG box is x-axis to right, y-axis to bottom;
-    //       Lottie Ellipse box is x-axis to right, y-axis to top !! 
-    const mX = fs.stroke.x1 * width + left; // stroke start;
-    const mY = -(fs.stroke.y1 * height + top);
-
-    let segNum = 1;
-    path = path.map(p => {
-        switch (p.cmd) {
-            case 'M':
-                p.params[0] = mX;
-                p.params[1] = mY;
-                break;
-            case 'a':
-                // change endpoint, 'a' is relative, x/y, there are two ellipse segment
-                // based on svg: https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d (Ellipse Arc)
-                p.params[5] = (segNum == 1 ? -mX : mX) * 2;
-                p.params[6] = (segNum == 1 ? -mY : mY) * 2;
-                segNum += 1;
-                break;
-        }
-        return p;
-    });
-    return path;
-};
-
-/**
- * primitive shape like ellipse/rect etc should adjust their start/end point based on the stroke position
- */
-const fixPathStartEnd = (shapeType: string, path: Avg.PathData[], fs) => {
-    if (shapeType === ELLIPSE) {
-        path = fixEllipsePathData(path, fs);
-    }
-    return path;
-};
-
-
 /**
  * Post-process a GroupShape.  This is recursive - group shapes can occur within group shapes.
  * 
@@ -393,10 +342,6 @@ export const groupShapeToPath = (map) => {
         paths.forEach(pd => {
             if (pd.path) {
                 let path = pd.path;
-
-                if (pd._primitiveShape === ELLIPSE) {
-                    path = fixPathStartEnd(pd._primitiveShape, pd.path, fs);
-                }
 
                 let item = Object.assign({
                     type: 'path',
@@ -513,7 +458,7 @@ export const groupShapeToPath = (map) => {
                     }
                     break;
                 case 'EllipseShape':
-                    paths.push({ _primitiveShape: ELLIPSE, path: x._pathData });
+                    paths.push({ path: x._pathData });
                     if (x._bounds instanceof Box) {
                         bounds = bounds.combine(x._bounds)
                     }
@@ -579,4 +524,14 @@ export const processSkewTransform = (skew) => {
 
 export const processFillRule = (ruleType: number) => {
     if (ruleType == 2) logs.errors.push(ERRORS.FILL_RULE_EVEN_ODD)
+};
+
+export const parseFunctionInsideExpression = (expressionString: string, defaultValue: string = '0'): string => {
+    const rx = /^\${(.*)}$/;
+    try {
+        return rx.exec(expressionString)[1]
+    } catch (error) {
+        // if error throw, it means there is no expression found in the expressionString, return default Value String;
+        return defaultValue;
+    }
 };

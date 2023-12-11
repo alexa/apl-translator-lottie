@@ -37,6 +37,12 @@ let lottieJSON = {
 const aplDocument = convert(lottieJSON)
 ```
 
+* To run local convert test
+ 
+1. Paste your Lottie file to `test/local/lottie.json`
+2. Run `npm run build && npm run convert`
+3. Converted APL will be written in `test/local/apl.json` file
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.

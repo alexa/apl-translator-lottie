@@ -1,81 +1,123 @@
 {
-    "type": "APL",
-    "version": "1.9",
-    "license": "Copyright 2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.\nSPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0\nLicensed under the Amazon Software License  http://aws.amazon.com/asl/",
-    "theme": "light",
-    "mainTemplate": {
-        "parameters": [
-            "payload"
-        ],
-        "items": {
-            "type": "VectorGraphic",
-            "source": "myGraphic",
-            "width": "100%",
-            "height": "100%",
-            "scale": "best-fit",
-            "align": "center",
-            "frame": "${(elapsedTime*0.06)%60}"
-        }
-    },
-    "graphics": {
-        "myGraphic": {
-            "type": "AVG",
-            "version": "1.2",
-            "width": 1312,
-            "height": 736,
-            "items": [
-                {
-                    "items": [
-                        {
-                            "translateX": 7.982,
-                            "translateY": -1.293,
-                            "items": [
-                                {
-                                    "type": "path",
-                                    "pathData": "M0,-268.5485 a268.5485,268.5485 0 0 1  0,537.097 a268.5485,268.5485 0 0 1  0,-537.097",
-                                    "fill": "rgb(0,231,254,1)"
-                                },
-                                {
-                                    "type": "path",
-                                    "pathData": "M0,-268.5485 a268.5485,268.5485 0 0 1  0,537.097 a268.5485,268.5485 0 0 1  0,-537.097",
-                                    "stroke": "rgb(212,28,28,1)",
-                                    "strokeWidth": 125,
-                                    "strokeLineCap": "butt",
-                                    "strokeLineJoin": "miter"
-                                }
-                            ],
-                            "type": "group"
-                        }
-                    ],
-                    "type": "group",
-                    "translateX": 660,
-                    "translateY": 360,
-                    "opacity": "${(@ease10(frame)*0.01)}",
-                    "clipPath": "M${@ease5(frame)},-151.841 C${(@ease5(frame)+@ease3(frame))},-151.841 -425.737,${(@ease6(frame)+@ease2(frame))} -425.737,${@ease6(frame)} C-425.737,${(@ease6(frame)+@ease4(frame))} ${(@ease7(frame)+@ease3(frame))},${@ease8(frame)} ${@ease7(frame)},${@ease8(frame)} C${(@ease7(frame)+@ease1(frame))},${@ease8(frame)} 428.525,${(@ease9(frame)+@ease4(frame))} 428.525,${@ease9(frame)} C428.525,${(@ease9(frame)+@ease2(frame))} ${(@ease5(frame)+@ease1(frame))},-151.841 ${@ease5(frame)},-151.841 z"
-                }
-            ],
-            "parameters": [
-                {
-                    "name": "frame",
-                    "value": 0
-                }
-            ],
-            "resources": [
-                {
-                    "easing": {
-                        "ease1": "line(0,235.898) line(30,0) end(59,235.898)",
-                        "ease2": "line(0,-78.175) line(30,0) end(59,-78.175)",
-                        "ease3": "line(0,-235.898) line(30,0) end(59,-235.898)",
-                        "ease4": "line(0,78.175) line(30,0) end(59,78.175)",
-                        "ease5": "line(0,1.394) line(30,-425.737) end(59,1.394)",
-                        "ease6": "line(0,-10.293) line(30,131.256) end(59,-10.293)",
-                        "ease7": "line(0,1.394) line(30,428.525) end(59,1.394)",
-                        "ease8": "line(0,369.256) line(30,131.256) end(59,131.256)",
-                        "ease9": "line(0,-10.293) line(30,-151.841) end(59,-10.293)",
-                        "ease10": "curve(0,100,0.167,0.167,0.833,0.833) curve(30,0,0.167,0.167,0.833,0.833) end(59,100)"
-                    }
-                }
-            ]
-        }
+  "type": "APL",
+  "version": "2023.1",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
     }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 1312,
+      "height": 736,
+      "parameters": [
+        {
+          "name": "playbackSpeed",
+          "default": 1
+        },
+        {
+          "name": "repeatMode",
+          "default": "restart"
+        },
+        {
+          "name": "repeatCount",
+          "default": -1
+        }
+      ],
+      "items": {
+        "type": "group",
+        "items": [
+          {
+            "items": [
+              {
+                "items": [
+                  {
+                    "type": "path",
+                    "pathData": "M0,-268.5485 a268.5485,268.5485 0 0 1  0,537.097 a268.5485,268.5485 0 0 1  0,-537.097",
+                    "fill": "rgb(0,231,254,1)"
+                  },
+                  {
+                    "type": "path",
+                    "pathData": "M0,-268.5485 a268.5485,268.5485 0 0 1  0,537.097 a268.5485,268.5485 0 0 1  0,-537.097",
+                    "stroke": "rgb(212,28,28,1)",
+                    "strokeWidth": 125,
+                    "strokeLineCap": "butt",
+                    "strokeLineJoin": "miter"
+                  }
+                ],
+                "type": "group",
+                "translateX": 7.982,
+                "translateY": -1.293
+              }
+            ],
+            "type": "group",
+            "translateX": 660,
+            "translateY": 360,
+            "opacity": "${(@ease10(frame)*0.01)}",
+            "clipPath": "M${@ease5(frame)},-151.841 C${(@ease5(frame)+@ease3(frame))},-151.841 -425.737,${(@ease6(frame)+@ease2(frame))} -425.737,${@ease6(frame)} C-425.737,${(@ease6(frame)+@ease4(frame))} ${(@ease7(frame)+@ease3(frame))},${@ease8(frame)} ${@ease7(frame)},${@ease8(frame)} C${(@ease7(frame)+@ease1(frame))},${@ease8(frame)} 428.525,${(@ease9(frame)+@ease4(frame))} 428.525,${@ease9(frame)} C428.525,${(@ease9(frame)+@ease2(frame))} ${(@ease5(frame)+@ease1(frame))},-151.841 ${@ease5(frame)},-151.841 z"
+          }
+        ],
+        "bind": [
+          {
+            "name": "frames",
+            "value": 60
+          },
+          {
+            "name": "startFrame",
+            "value": 0
+          },
+          {
+            "name": "__ELLAPSED_FRAME",
+            "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.06)}"
+          },
+          {
+            "name": "__ELLAPSED_FRAME_CONSTRAINED",
+            "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+          },
+          {
+            "name": "__FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+          },
+          {
+            "name": "__SEESAWED_FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+          },
+          {
+            "name": "__CURRENT_FRAME",
+            "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+          },
+          {
+            "name": "frame",
+            "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "line(0,235.898) line(30,0) end(59,235.898)",
+            "ease2": "line(0,-78.175) line(30,0) end(59,-78.175)",
+            "ease3": "line(0,-235.898) line(30,0) end(59,-235.898)",
+            "ease4": "line(0,78.175) line(30,0) end(59,78.175)",
+            "ease5": "line(0,1.394) line(30,-425.737) end(59,1.394)",
+            "ease6": "line(0,-10.293) line(30,131.256) end(59,-10.293)",
+            "ease7": "line(0,1.394) line(30,428.525) end(59,1.394)",
+            "ease8": "line(0,369.256) line(30,131.256) end(59,131.256)",
+            "ease9": "line(0,-10.293) line(30,-151.841) end(59,-10.293)",
+            "ease10": "curve(0,100,0.167,0.167,0.833,0.833) curve(30,0,0.167,0.167,0.833,0.833) end(59,100)"
+          }
+        }
+      ]
+    }
+  }
 }

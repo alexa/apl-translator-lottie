@@ -1,0 +1,141 @@
+{
+    "type": "APL",
+    "version": "2023.1",
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": {
+            "type": "Container",
+            "bind": {
+                "name": "frame",
+                "value": "${(elapsedTime*0.0299700012207031)%150.000006109625}"
+            },
+            "items": [
+                {
+                    "type": "Image",
+                    "width": 960,
+                    "height": 480,
+                    "position": "absolute",
+                    "source": "images/weather-bg.png",
+                    "opacity": "${(@ease1(frame)*0.01)}",
+                    "transform": [
+                        {
+                            "translateX": -466.00160000000005,
+                            "translateY": -153.00080000000003
+                        },
+                        {
+                            "translateX": 626.0016,
+                            "translateY": 313.0008
+                        },
+                        {
+                            "scaleX": 2.30417,
+                            "scaleY": 2.30417
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "width": 400,
+                    "height": 399,
+                    "position": "absolute",
+                    "source": "images/sun-small.png",
+                    "opacity": "${(@ease1(frame)*0.01)}",
+                    "transform": [
+                        {
+                            "translateX": "${(@ease5(frame)-314)}",
+                            "translateY": 86.78499999999997
+                        },
+                        {
+                            "translateX": 114,
+                            "translateY": 113.71500000000003
+                        },
+                        {
+                            "scaleX": 1.57,
+                            "scaleY": 1.57
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "width": 176,
+                    "height": 90,
+                    "position": "absolute",
+                    "source": "images/weather-Cloud_back-small.png",
+                    "opacity": "${(@ease1(frame)*0.01)}",
+                    "transform": [
+                        {
+                            "translateX": "${(@ease4(frame)-121.99968)}",
+                            "translateY": 263.61379999999997
+                        },
+                        {
+                            "translateX": 33.99968,
+                            "translateY": 17.386200000000002
+                        },
+                        {
+                            "scaleX": 1.38636,
+                            "scaleY": 1.38636
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "width": 250,
+                    "height": 120,
+                    "position": "absolute",
+                    "source": "images/weather-Cloud_L-small.png",
+                    "opacity": "${(@ease1(frame)*0.01)}",
+                    "transform": [
+                        {
+                            "translateX": "${(@ease3(frame)-250)}",
+                            "translateY": 370
+                        },
+                        {
+                            "translateX": 125,
+                            "translateY": 60
+                        },
+                        {
+                            "scaleX": 2,
+                            "scaleY": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "width": 500,
+                    "height": 255,
+                    "position": "absolute",
+                    "source": "images/weather-cloud_R-small.png",
+                    "opacity": "${(@ease1(frame)*0.01)}",
+                    "transform": [
+                        {
+                            "translateX": "${(@ease2(frame)-175.49)}",
+                            "translateY": 356.5001
+                        },
+                        {
+                            "translateX": -74.50999999999999,
+                            "translateY": -38.0001
+                        },
+                        {
+                            "scaleX": 0.70196,
+                            "scaleY": 0.70196
+                        }
+                    ]
+                }
+            ],
+            "height": "100%",
+            "width": "100%"
+        }
+    },
+    "resources": [
+        {
+            "easing": {
+                "ease1": "curve(34,0,0.167,0.167,0,0.828) curve(49,100,0,0,0.833,1) curve(136,100,0.167,0,0.833,1) end(149.000006068894,0)",
+                "ease2": "spatial(3,0) scurve(34,938,446,0,0,0,0,0,0,0,0.167,0.167,0.833,0.833) send(149.000006068894,850,446,0)",
+                "ease3": "spatial(3,0) scurve(34,506,490,0,0,0,0,0,0,0,0.167,0.167,0.833,0.833) send(149.000006068894,362,490,0)",
+                "ease4": "spatial(3,0) scurve(34,768,326,0,0,0,0,0,0,0,0.167,0.167,0.833,0.833) send(149.000006068894,740,326,0)",
+                "ease5": "spatial(3,0) scurve(34,676,400,0,0,0,0,0,0,0,0.167,0.167,0.833,0.833) send(149.000006068894,646,400,0)"
+            }
+        }
+    ]
+}

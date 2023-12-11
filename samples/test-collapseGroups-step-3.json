@@ -1,0 +1,364 @@
+{
+  "type": "AVG",
+  "version": "1.2",
+  "width": 1920,
+  "height": 1080,
+  "items": [
+    {
+      "type": "group",
+      "items": []
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "path"
+                    },
+                    {
+                      "type": "path"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "path"
+            }
+          ],
+          "opacity_numeric": 0
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "group",
+                      "items": [
+                        {
+                          "items": [
+                            {
+                              "type": "path",
+                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                              "fill": "rgb(123,223,223,1)"
+                            }
+                          ],
+                          "type": "group",
+                          "translateX_numeric": 77,
+                          "translateY_numeric": 377,
+                          "translateX_data_binding": "${@ease(frame)}",
+                          "translateY_data_binding": "${(-@ease(frame))}",
+                          "pivotX_numeric": -77,
+                          "pivotX_data_binding": "${@ease(frame)+1}",
+                          "pivotY_numeric": -377,
+                          "pivotY_data_binding": "${0.25*@ease(frame)}",
+                          "rotation_data_binding": "${200+@ease(frame)-1*(-90.2/2)}",
+                          "scaleX_data_binding": "${@ease(frame)}",
+                          "scaleY_data_binding": "${@ease(frame)}",
+                          "opacity_data_binding": "${((-@ease(frame))*@ease(frame))}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "translateX_numeric": 123,
+              "translateY_numeric": 123,
+              "pivotX_numeric": 12.3,
+              "pivotY_numeric": 12.3,
+              "rotation_numeric": -123,
+              "scaleX_numeric": -123,
+              "scaleY_numeric": -12.3,
+              "opacity_numeric": -12.3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "items": [
+                        {
+                          "type": "path",
+                          "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                          "fill": "rgb(123,223,223,1)"
+                        }
+                      ],
+                      "type": "group",
+                      "translateX_numeric": 400,
+                      "translateY_numeric": 500,
+                      "translateX_data_binding": "${@ease(frame)}",
+                      "translateY_data_binding": "${(-@ease(frame))}",
+                      "pivotX_data_binding": "${@ease(frame)+1}",
+                      "pivotY_data_binding": "${0.25*@ease(frame)}",
+                      "rotation_data_binding": "${200+@ease(frame)-1*(-90.2/2)}",
+                      "scaleX_data_binding": "${@ease(frame)}",
+                      "scaleY_data_binding": "${@ease(frame)}",
+                      "opacity_data_binding": "${@ease(frame)}",
+                      "pivotX_numeric": -400,
+                      "pivotY_numeric": -500
+                    }
+                  ]
+                }
+              ],
+              "translateX_numeric": 123,
+              "translateY_numeric": 123,
+              "pivotX_numeric": 12.3,
+              "pivotY_numeric": 12.3,
+              "rotation_numeric": -123,
+              "scaleX_numeric": -123,
+              "scaleY_numeric": -12.3,
+              "opacity_numeric": -12.3
+            },
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "group",
+                      "items": [
+                        {
+                          "items": [
+                            {
+                              "type": "path",
+                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                              "fill": "rgb(123,223,223,1)"
+                            }
+                          ],
+                          "type": "group",
+                          "translateX_numeric": -477,
+                          "translateY_numeric": -377,
+                          "translateX_data_binding": "${@ease(frame)}",
+                          "translateY_data_binding": "${(-@ease(frame))}",
+                          "pivotX_numeric": 477,
+                          "pivotX_data_binding": "${@ease(frame)+1}",
+                          "pivotY_numeric": 377,
+                          "pivotY_data_binding": "${0.25*@ease(frame)}",
+                          "rotation_data_binding": "${200+@ease(frame)-1*(-90.2/2)}",
+                          "scaleX_data_binding": "${@ease(frame)}",
+                          "scaleY_data_binding": "${@ease(frame)}",
+                          "opacity_numeric": -12.3,
+                          "opacity_data_binding": "${@ease(frame)}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "group",
+                      "items": [
+                        {
+                          "type": "group",
+                          "items": [
+                            {
+                              "type": "group",
+                              "items": [
+                                {
+                                  "type": "group",
+                                  "items": [
+                                    {
+                                      "type": "group",
+                                      "items": [
+                                        {
+                                          "items": [
+                                            {
+                                              "type": "path",
+                                              "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                                              "fill": "rgb(123,223,223,1)"
+                                            }
+                                          ],
+                                          "type": "group",
+                                          "translateX_numeric": 900,
+                                          "translateY_numeric": 600,
+                                          "pivotX_numeric": -700,
+                                          "pivotY_numeric": -400,
+                                          "rotation_numeric": -100,
+                                          "scaleX_numeric": 2,
+                                          "scaleY_numeric": 2
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "translateX_numeric": -100,
+                          "translateY_numeric": -100,
+                          "rotation_numeric": 100,
+                          "scaleX_numeric": 0.5,
+                          "scaleY_numeric": 0.5,
+                          "opacity_numeric": 2
+                        }
+                      ],
+                      "translateX_numeric": 100,
+                      "translateY_numeric": 100,
+                      "rotation_numeric": -100,
+                      "scaleX_numeric": 2,
+                      "scaleY_numeric": 2,
+                      "opacity_numeric": 0.5
+                    }
+                  ],
+                  "translateX_numeric": 123,
+                  "translateY_numeric": 123,
+                  "pivotX_numeric": 12.3,
+                  "pivotY_numeric": 12.3,
+                  "rotation_numeric": -123,
+                  "scaleX_numeric": -123,
+                  "scaleY_numeric": -12.3,
+                  "opacity_special": "${frame >= 100 && frame <= 200 ? 1 : 0}"
+                }
+              ],
+              "translateX_data_binding": "${@ease(frame)}",
+              "translateY_data_binding": "${-@ease(frame)}",
+              "opacity_data_binding": "${@ease(frame)}"
+            }
+          ],
+          "translateX_numeric": 123,
+          "translateY_numeric": 123,
+          "opacity_numeric": -12.3,
+          "translateX_data_binding": "${@ease(frame)}",
+          "translateY_data_binding": "${(-@ease(frame))}",
+          "pivotX_data_binding": "${@ease(frame)+1}",
+          "pivotY_data_binding": "${0.25*@ease(frame)}",
+          "rotation_data_binding": "${200+@ease(frame)-1*(-90.2/2)}",
+          "scaleX_data_binding": "${@ease(frame)}",
+          "scaleY_data_binding": "${@ease(frame)}",
+          "opacity_data_binding": "${@ease(frame)}",
+          "pivotX_numeric": -123,
+          "pivotY_numeric": -123
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "path",
+                      "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                      "fill": "rgb(123,223,223,1)"
+                    }
+                  ],
+                  "translateX_data_binding": "${@ease(frame)}",
+                  "translateY_data_binding": "${-@ease(frame)}",
+                  "translateX_numeric": 100,
+                  "translateY_numeric": 100
+                }
+              ]
+            }
+          ],
+          "translateX_numeric": 100,
+          "translateY_numeric": 100,
+          "clipPath_special": "test",
+          "translateX_data_binding": "${@ease(frame)}",
+          "translateY_data_binding": "${(-@ease(frame))}"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "items": [
+        {
+          "type": "group",
+          "items": [
+            {
+              "type": "group",
+              "items": [
+                {
+                  "type": "group",
+                  "items": [
+                    {
+                      "type": "path",
+                      "pathData": "M0,-${@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,${2*@ease(frame)} a${@ease(frame)},${@ease(frame)} 0 0 1 0,-${2*@ease(frame)}",
+                      "fill": "rgb(123,223,223,1)"
+                    }
+                  ],
+                  "translateX_data_binding": "${@ease(frame)}",
+                  "translateY_data_binding": "${-@ease(frame)}",
+                  "translateX_numeric": 100,
+                  "translateY_numeric": 100,
+                  "rotation_numeric": 50,
+                  "pivotX_data_binding": "${(-@ease(frame))}",
+                  "pivotY_data_binding": "${(-(-@ease(frame)))}"
+                }
+              ]
+            }
+          ],
+          "translateX_numeric": 100,
+          "translateY_numeric": 100,
+          "translateX_data_binding": "${@ease(frame)}",
+          "translateY_data_binding": "${(-@ease(frame))}",
+          "scaleX_numeric": 1.5,
+          "pivotX_numeric": -100,
+          "pivotY_numeric": -100
+        }
+      ]
+    }
+  ],
+  "parameters": [
+    {
+      "name": "frame",
+      "value": 0
+    }
+  ],
+  "resources": [
+    {
+      "easing": {
+        "ease": "line(0,100) line(100,200) end(200,100)"
+      }
+    }
+  ]
+}

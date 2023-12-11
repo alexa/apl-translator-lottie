@@ -1,0 +1,253 @@
+{
+  "type": "APL",
+  "version": "2023.1",
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": {
+      "type": "VectorGraphic",
+      "source": "myGraphic",
+      "width": "100%",
+      "height": "100%",
+      "scale": "best-fit",
+      "align": "center"
+    }
+  },
+  "graphics": {
+    "myGraphic": {
+      "type": "AVG",
+      "version": "1.2",
+      "width": 960,
+      "height": 600,
+      "parameters": [
+        {
+          "name": "playbackSpeed",
+          "default": 1
+        },
+        {
+          "name": "repeatMode",
+          "default": "restart"
+        },
+        {
+          "name": "repeatCount",
+          "default": -1
+        }
+      ],
+      "items": {
+        "type": "group",
+        "items": [
+          {
+            "type": "path",
+            "fill": "#f8d3b7",
+            "pathData": "M0,0 l960,0 l0,600 l-960,0 z"
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M491.1365,-309.785 l0,619.57 l-982.273,0 l0,-619.57 z",
+                "fill": "rgb(250,216,189,1)"
+              }
+            ],
+            "type": "group",
+            "translateX": 485.137,
+            "translateY": 303.785
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M505.0155,-321.094 l0,642.188 l-1010.031,0 l0,-642.188 z",
+                "fill": "@gradient1000",
+                "fillTransform": "scale(0.6358101880041306,1) translate(-0.12786494083662528, 0)"
+              }
+            ],
+            "type": "group",
+            "translateX": 473.01599999999996,
+            "translateY": 297.094
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M505.0155,-321.094 l0,642.188 l-1010.031,0 l0,-642.188 z",
+                "fill": "@gradient1001",
+                "fillTransform": "scale(0.6358101880041306,1) translate(0.5645294259868298, 0)"
+              }
+            ],
+            "type": "group",
+            "translateX": 473.01599999999996,
+            "translateY": 297.094
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M505.0155,-321.094 l0,642.188 l-1010.031,0 l0,-642.188 z",
+                "fill": {
+                  "type": "radial",
+                  "inputRange": [
+                    0,
+                    0.508,
+                    1
+                  ],
+                  "colorRange": [
+                    "rgba(116,195,213,1)",
+                    "rgba(116,197,212,0.5)",
+                    "rgba(115,198,212,0)"
+                  ],
+                  "centerX": "${((@ease5(frame)+505.0155)/1010.031)}",
+                  "centerY": 0.05995129152210879,
+                  "radius": "${Math.sqrt(((((@ease6(frame)-@ease5(frame))/1010.031)*((@ease6(frame)-@ease5(frame))/1010.031))+0.1654367345463904))}"
+                },
+                "fillTransform": "scale(0.6358101880041306,1) translate(${(((@ease5(frame)+505.0155)/1010.031)*0.5727964396718718)}, 0)"
+              }
+            ],
+            "type": "group",
+            "translateX": 473.01599999999996,
+            "translateY": 297.094
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M505.0155,-321.094 l0,642.188 l-1010.031,0 l0,-642.188 z",
+                "fill": {
+                  "type": "radial",
+                  "inputRange": [
+                    0,
+                    0.405,
+                    1
+                  ],
+                  "colorRange": [
+                    "rgba(242,126,109,1)",
+                    "rgba(236,134,117,0.5)",
+                    "rgba(229,141,124,0)"
+                  ],
+                  "centerX": "${((@ease3(frame)+505.0155)/1010.031)}",
+                  "centerY": 0.7708755068609193,
+                  "radius": "${Math.sqrt(((((@ease4(frame)-@ease3(frame))/1010.031)*((@ease4(frame)-@ease3(frame))/1010.031))+0.18944754136523528))}"
+                },
+                "fillTransform": "scale(0.6358101880041306,1) translate(${(((@ease3(frame)+505.0155)/1010.031)*0.5727964396718718)}, 0)"
+              }
+            ],
+            "type": "group",
+            "translateX": 473.01599999999996,
+            "translateY": 297.094
+          },
+          {
+            "items": [
+              {
+                "type": "path",
+                "pathData": "M505.0155,-321.094 l0,642.188 l-1010.031,0 l0,-642.188 z",
+                "fill": {
+                  "type": "radial",
+                  "inputRange": [
+                    0,
+                    0.355,
+                    1
+                  ],
+                  "colorRange": [
+                    "rgba(251,211,176,1)",
+                    "rgba(240,176,150,0.5)",
+                    "rgba(229,141,124,0)"
+                  ],
+                  "centerX": "${((@ease1(frame)+505.0155)/1010.031)}",
+                  "centerY": 0.14922110036313355,
+                  "radius": "${Math.sqrt(((((@ease2(frame)-@ease1(frame))/1010.031)*((@ease2(frame)-@ease1(frame))/1010.031))+0.038238667676034004))}"
+                },
+                "fillTransform": "scale(0.6358101880041306,1) translate(${(((@ease1(frame)+505.0155)/1010.031)*0.5727964396718718)}, 0)"
+              }
+            ],
+            "type": "group",
+            "translateX": 473.01599999999996,
+            "translateY": 297.094
+          }
+        ],
+        "bind": [
+          {
+            "name": "frames",
+            "value": 862
+          },
+          {
+            "name": "startFrame",
+            "value": 0
+          },
+          {
+            "name": "__ELLAPSED_FRAME",
+            "value": "${Math.abs(playbackSpeed) * (elapsedTime * 0.06)}"
+          },
+          {
+            "name": "__ELLAPSED_FRAME_CONSTRAINED",
+            "value": "${repeatCount == -1 ? __ELLAPSED_FRAME : __ELLAPSED_FRAME < frames * (repeatCount + 1) ? __ELLAPSED_FRAME : frames * (repeatCount + 1) - 1}"
+          },
+          {
+            "name": "__FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % frames}"
+          },
+          {
+            "name": "__SEESAWED_FRAME",
+            "value": "${__ELLAPSED_FRAME_CONSTRAINED % (frames * 2) > frames ? frames * 2 - __ELLAPSED_FRAME_CONSTRAINED % (frames * 2) - 1 : __ELLAPSED_FRAME_CONSTRAINED % (frames * 2)}"
+          },
+          {
+            "name": "__CURRENT_FRAME",
+            "value": "${repeatMode == 'reverse' ? __SEESAWED_FRAME : __FRAME}"
+          },
+          {
+            "name": "frame",
+            "value": "${startFrame + (playbackSpeed < 0 ? (frames - __CURRENT_FRAME - 1) : __CURRENT_FRAME)}"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "easing": {
+            "ease1": "spatial(2,0) scurve(0,-191.883,-225.266,0,0,0,0,0.167,0.167,0.833,0.806) scurve(501,-137.883,-225.266,0,0,0,0,0.167,0.139,0.833,0.833) send(861,-191.883,-225.266)",
+            "ease2": "spatial(2,0) scurve(0,-453.688,-350.844,0,0,0,0,0.167,0.167,0.833,0.877) scurve(318,-536.688,-350.844,0,0,0,0,0.167,0.21,0.833,0.833) send(861,-453.688,-350.844)",
+            "ease3": "spatial(2,0) scurve(0,-58.523,173.953,0,0,0,0,0.167,0.167,0.833,0.877) scurve(318,22.477,173.953,0,0,0,0,0.167,0.21,0.833,0.833) send(861,-58.523,173.953)",
+            "ease4": "spatial(2,0) scurve(0,-405.703,453.469,0,0,0,0,0.167,0.167,0.833,0.816) scurve(474,-283.703,453.469,0,0,0,0,0.167,0.15,0.833,0.833) send(861,-405.703,453.469)",
+            "ease5": "spatial(2,0) scurve(0,111.719,-282.594,0,0,0,0,0.167,0.167,0.833,0.907) scurve(241,168.719,-282.594,0,0,0,0,0.167,0.24,0.833,0.833) send(861,111.719,-282.594)",
+            "ease6": "spatial(2,0) scurve(0,-261.484,-543.797,0,0,0,0,0.167,0.167,0.833,0.781) scurve(565,-175.484,-543.797,0,0,0,0,0.167,0.115,0.833,0.833) send(861,-261.484,-543.797)"
+          }
+        },
+        {
+          "gradient": {
+            "gradient1000": {
+              "type": "radial",
+              "inputRange": [
+                0,
+                0.596,
+                1
+              ],
+              "colorRange": [
+                "rgba(54,176,201,1)",
+                "rgba(84,187,207,0.5)",
+                "rgba(115,198,212,0)"
+              ],
+              "centerX": -0.22322928702188355,
+              "centerY": 0.2987100350676126,
+              "radius": 0.8934402748452809
+            },
+            "gradient1001": {
+              "type": "radial",
+              "inputRange": [
+                0,
+                0.493,
+                1
+              ],
+              "colorRange": [
+                "rgba(241,188,124,1)",
+                "rgba(241,188,124,0.5)",
+                "rgba(241,188,124,0)"
+              ],
+              "centerX": 0.9855672746678072,
+              "centerY": 0.3119584919057971,
+              "radius": 0.5977090893158753
+            }
+          }
+        }
+      ]
+    }
+  }
+}
